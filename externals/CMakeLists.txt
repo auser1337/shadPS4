@@ -154,3 +154,16 @@ option(TRACY_NO_SAMPLING "" ON)
 option(TRACY_ONLY_LOCALHOST "" ON)
 option(TRACY_NO_CONTEXT_SWITCH "" ON)
 add_subdirectory(tracy)
+
+# Vita3K ffmpeg-core
+
+if (APPLE)
+    set(ARCHITECTURE "arm64")
+endif()
+
+if (WIN32 OR UNIX)
+    set(ARCHITECTURE "x86_64")
+endif()
+
+add_subdirectory(ffmpeg-core)
+target_include_directories(ffmpeg INTERFACE ffmpeg-core/include)

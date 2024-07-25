@@ -606,6 +606,8 @@ if (WIN32)
     endif()
 endif()
 
+target_link_libraries(shadps4 PRIVATE ffmpeg)
+
 if (WIN32)
     target_sources(shadps4 PRIVATE src/shadps4.rc)
 endif()
