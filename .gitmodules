@@ -66,4 +66,4 @@
 	url = http://github.com/Vita3K/ffmpeg-core
 [submodule "externals/LibAtrac9"]
 	path = externals/LibAtrac9
-	url = https://github.com/Thealexbarney/LibAtrac9
+	url = https://github.com/auser1337/LibAtrac9
