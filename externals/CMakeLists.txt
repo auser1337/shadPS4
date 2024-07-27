@@ -157,12 +157,12 @@ add_subdirectory(tracy)
 
 # Vita3K ffmpeg-core
 
-if (APPLE)
-    set(ARCHITECTURE "arm64")
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "(x86_64)|(AMD64)")
+    set(ARCHITECTURE "x86_64")
 endif()
 
-if (WIN32 OR UNIX)
-    set(ARCHITECTURE "x86_64")
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64|(arm64)|(ARM64)")
+    set(ARCHITECTURE "arm64")
 endif()
 
 add_subdirectory(ffmpeg-core)
