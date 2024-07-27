@@ -166,4 +166,12 @@ if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64|(arm64)|(ARM64)")
 endif()
 
 add_subdirectory(ffmpeg-core)
-target_include_directories(ffmpeg INTERFACE ffmpeg-core/include)
+
+# LibAtrac9
+
+file(GLOB LIBATRAC9_SOURCES
+    LibAtrac9/C/src/*.c
+)
+
+add_library(LibAtrac9 STATIC ${LIBATRAC9_SOURCES})
+target_include_directories(LibAtrac9 PUBLIC LibAtrac9/C/src)

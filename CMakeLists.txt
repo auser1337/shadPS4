@@ -607,6 +607,7 @@ if (WIN32)
 endif()
 
 target_link_libraries(shadps4 PRIVATE ffmpeg)
+target_link_libraries(shadps4 PRIVATE LibAtrac9)
 
 if (WIN32)
     target_sources(shadps4 PRIVATE src/shadps4.rc)
