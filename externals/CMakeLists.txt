@@ -237,27 +237,15 @@ if (NOT TARGET OpenSSL::SSL)
     add_library(OpenSSL::SSL ALIAS ssl)
     add_library(OpenSSL::Crypto ALIAS crypto)
 
-    execute_process(
-        COMMAND git rev-parse --short HEAD
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/openssl-prebuilts
-        OUTPUT_VARIABLE OPENSSL_GIT_SHA
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
-
     function(download_and_extract suffix)
         set(output_dir ${OPENSSL_DOWNLOAD_DIR}/${suffix})
         set(zip_file ${OPENSSL_DOWNLOAD_DIR}/openssl-${suffix}.zip)
 
         if (NOT EXISTS ${zip_file})
-            file(DOWNLOAD https://github.com/auser1337/openssl-prebuilts/releases/download/${OPENSSL_GIT_SHA}/${OPENSSL_PREBUILTS_PREFIX}-openssl-${suffix}.zip
+            file(DOWNLOAD https://github.com/auser1337/openssl-prebuilts/releases/latest/download/${OPENSSL_PREBUILTS_PREFIX}-openssl-${suffix}.zip
                 ${zip_file}
                 SHOW_PROGRESS
                 STATUS OPENSSL_HEADERS_FILE_STATUS)
-
-            list(GET OPENSSL_HEADERS_FILE_STATUS 0 STATUS_CODE)
-            if (NOT STATUS_CODE EQUAL 0)
-                file(REMOVE ${zip_file})
-                message(FATAL_ERROR "No OpenSSL ${suffix} archive found for platform ${CMAKE_SYSTEM_NAME} with commit SHA ${OPENSSL_GIT_SHA}")
-            endif()
         endif()
 
         if (NOT EXISTS ${output_dir})

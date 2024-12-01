@@ -73,7 +73,6 @@
 [submodule "externals/ext-boost"]
 	path = externals/ext-boost
 	url = https://github.com/auser1337/ext-boost.git
-	shallow = true
 [submodule "externals/date"]
 	path = externals/date
 	url = https://github.com/HowardHinnant/date.git
@@ -105,6 +104,3 @@
 [submodule "externals/libpng"]
 	path = externals/libpng
 	url = https://github.com/pnggroup/libpng
-[submodule "externals/openssl-prebuilts"]
-	path = externals/openssl-prebuilts
-	url = https://github.com/auser1337/openssl-prebuilts.git
