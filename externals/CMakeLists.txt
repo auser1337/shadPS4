@@ -220,5 +220,60 @@ if (ENABLE_DISCORD_RPC)
     target_include_directories(discord-rpc INTERFACE discord-rpc/include)
 endif()
 
+# OpenSSL
+if (NOT TARGET OpenSSL::SSL)
+    if (WIN32)
+        set(OPENSSL_PREBUILTS_PREFIX "windows")
+    else()
+        # TODO: Make prebuilts for MinGW, Linux, macOS
+        message(FATAL_ERROR "Unsupported platform")
+    endif()
+
+    set(OPENSSL_DOWNLOAD_DIR ${CMAKE_BINARY_DIR}/external/openssl)
+    set(OPENSSL_INCLUDE_DIR ${OPENSSL_DOWNLOAD_DIR}/include)
+
+    add_library(ssl INTERFACE)
+    add_library(crypto INTERFACE)
+    add_library(OpenSSL::SSL ALIAS ssl)
+    add_library(OpenSSL::Crypto ALIAS crypto)
+
+    execute_process(
+        COMMAND git rev-parse --short HEAD
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/openssl-prebuilts
+        OUTPUT_VARIABLE OPENSSL_GIT_SHA
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+    function(download_and_extract suffix)
+        set(output_dir ${OPENSSL_DOWNLOAD_DIR}/${suffix})
+        set(zip_file ${OPENSSL_DOWNLOAD_DIR}/openssl-${suffix}.zip)
+
+        if (NOT EXISTS ${zip_file})
+            file(DOWNLOAD https://github.com/auser1337/openssl-prebuilts/releases/download/${OPENSSL_GIT_SHA}/${OPENSSL_PREBUILTS_PREFIX}-openssl-${suffix}.zip
+                ${zip_file}
+                SHOW_PROGRESS
+                STATUS OPENSSL_HEADERS_FILE_STATUS)
+
+            list(GET OPENSSL_HEADERS_FILE_STATUS 0 STATUS_CODE)
+            if (NOT STATUS_CODE EQUAL 0)
+                file(REMOVE ${zip_file})
+                message(FATAL_ERROR "No OpenSSL ${suffix} archive found for platform ${CMAKE_SYSTEM_NAME} with commit SHA ${OPENSSL_GIT_SHA}")
+            endif()
+        endif()
+
+        if (NOT EXISTS ${output_dir})
+            file(ARCHIVE_EXTRACT INPUT ${zip_file} DESTINATION ${output_dir})
+        endif()
+    endfunction()
+
+    download_and_extract("include")
+    download_and_extract("bin")
+
+    target_include_directories(ssl INTERFACE ${OPENSSL_INCLUDE_DIR})
+    target_link_libraries(ssl INTERFACE ${OPENSSL_DOWNLOAD_DIR}/bin/libssl_static.lib)
+
+    target_include_directories(crypto INTERFACE ${OPENSSL_INCLUDE_DIR})
+    target_link_libraries(crypto INTERFACE ${OPENSSL_DOWNLOAD_DIR}/bin/libcrypto_static.lib)
+endif()
+
 # GCN Headers
 add_subdirectory(gcn)

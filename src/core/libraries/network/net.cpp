@@ -15,10 +15,15 @@
 #include "core/libraries/error_codes.h"
 #include "core/libraries/libs.h"
 #include "core/libraries/network/net.h"
+#include "core/libraries/network/net_client.h"
 
 namespace Libraries::Net {
 
-static thread_local int32_t net_errno = 0;
+// https://www.boost.org/doc/libs/1_86_0/doc/html/boost_asio/tutorial/tutdaytime1.html
+// https://github.com/boostorg/asio/blob/develop/example/cpp11/http/client/sync_client.cpp
+// https://github.com/mabrarov/asio_samples
+
+static auto client = Client();
 
 int PS4_SYSV_ABI in6addr_any() {
     LOG_ERROR(Lib_Net, "(STUBBED) called");
@@ -566,7 +571,7 @@ int PS4_SYSV_ABI sceNetEpollWait() {
 }
 
 int* PS4_SYSV_ABI sceNetErrnoLoc() {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
+    LOG_INFO(Lib_Net, "called, net_errno = {}", net_errno);
     return &net_errno;
 }
 
@@ -640,9 +645,8 @@ int PS4_SYSV_ABI sceNetGetIfnameNumList() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetGetMacAddress() {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
-    return ORBIS_OK;
+int PS4_SYSV_ABI sceNetGetMacAddress(OrbisNetEtherAddr* addr, int flags) {
+    return Client::GetMacAddress(addr, flags);
 }
 
 int PS4_SYSV_ABI sceNetGetMemoryPoolStats() {
@@ -925,9 +929,9 @@ int PS4_SYSV_ABI sceNetSendmsg() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetSendto() {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
-    return ORBIS_OK;
+int PS4_SYSV_ABI sceNetSendto(OrbisNetId s, void* buf, size_t len, int flags,
+                              const OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen) {
+    return client.SendTo(s, buf, len, flags, addr, addrlen);
 }
 
 int PS4_SYSV_ABI sceNetSetDns6Info() {
@@ -1040,9 +1044,8 @@ int PS4_SYSV_ABI sceNetShutdown() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetSocket(const char* name, int family, int type, int protocol) {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
-    return ORBIS_OK;
+int PS4_SYSV_ABI sceNetSocket(const char* name, int family, SocketType type, int protocol) {
+    return client.Socket(name, family, type, protocol);
 }
 
 int PS4_SYSV_ABI sceNetSocketAbort() {
@@ -1050,9 +1053,8 @@ int PS4_SYSV_ABI sceNetSocketAbort() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetSocketClose() {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
-    return ORBIS_OK;
+int PS4_SYSV_ABI sceNetSocketClose(OrbisNetId s) {
+    return client.SocketClose(s);
 }
 
 int PS4_SYSV_ABI sceNetSyncCreate() {
@@ -1124,6 +1126,40 @@ int PS4_SYSV_ABI sceNetEmulationSet() {
     LOG_ERROR(Lib_Net, "(STUBBED) called");
     return ORBIS_OK;
 }
+
+int PS4_SYSV_ABI bind(OrbisNetId socket, const OrbisNetSockaddr* address,
+                      OrbisNetSocklen_t address_len) {
+    return client.Bind(socket, address, address_len);
+}
+
+int PS4_SYSV_ABI listen(OrbisNetId socket, int backlog) {
+    return client.Listen(socket, backlog);
+}
+
+OrbisNetId PS4_SYSV_ABI accept(OrbisNetId socket, OrbisNetSockaddr* address,
+                               OrbisNetSocklen_t* address_len) {
+    return client.Accept(socket, address, address_len);
+}
+
+u32 PS4_SYSV_ABI htonl(u32 host32) {
+    return sceNetHtonl(host32);
+}
+
+u16 PS4_SYSV_ABI htons(u16 host16) {
+    return sceNetHtons(host16);
+}
+
+#ifdef WIN32
+SSIZE_T PS4_SYSV_ABI recvfrom(int, void*, size_t, int, OrbisNetSockaddr* __restrict,
+                              OrbisNetSocklen_t* __restrict) {
+    return ORBIS_OK;
+}
+#else
+ssize_t PS4_SYSV_ABI recvfrom(int, void*, size_t, int, OrbisNetSockaddr* __restrict,
+                              OrbisNetSocklen_t* __restrict) {
+    return ORBIS_OK;
+}
+#endif
 
 void RegisterlibSceNet(Core::Loader::SymbolsResolver* sym) {
     LIB_FUNCTION("ZRAJo-A-ukc", "libSceNet", 1, "libSceNet", 1, 1, in6addr_any);
@@ -1373,6 +1409,15 @@ void RegisterlibSceNet(Core::Loader::SymbolsResolver* sym) {
     LIB_FUNCTION("DnB6WJ91HGg", "libSceNet", 1, "libSceNet", 1, 1, Func_0E707A589F751C68);
     LIB_FUNCTION("JK1oZe4UysY", "libSceNetDebug", 1, "libSceNet", 1, 1, sceNetEmulationGet);
     LIB_FUNCTION("pfn3Fha1ydc", "libSceNetDebug", 1, "libSceNet", 1, 1, sceNetEmulationSet);
-};
+
+    // Posix
+    LIB_FUNCTION("KuOmgKoqCdY", "libScePosix", 1, "libkernel", 1, 1, bind);
+    LIB_FUNCTION("lUk6wrGXyMw", "libScePosix", 1, "libkernel", 1, 1, recvfrom);
+    LIB_FUNCTION("TU-d9PfIHPM", "libScePosix", 1, "libkernel", 1, 1, sceNetSocket);
+    LIB_FUNCTION("K1S8oc61xiM", "libScePosix", 1, "libkernel", 1, 1, htonl);
+    LIB_FUNCTION("jogUIsOV3-U", "libScePosix", 1, "libkernel", 1, 1, htons);
+    LIB_FUNCTION("pxnCmagrtao", "libScePosix", 1, "libkernel", 1, 1, listen);
+    LIB_FUNCTION("3e+4Iv7IJ8U", "libScePosix", 1, "libkernel", 1, 1, accept);
+}
 
 } // namespace Libraries::Net
