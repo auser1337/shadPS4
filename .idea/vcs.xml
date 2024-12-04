@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/LibAtrac9" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/cryptopp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/cryptopp-cmake" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/cryptoppwin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/date" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/dear_imgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/discord-rpc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/ext-boost" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/ffmpeg-core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/fmt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/glslang" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/half" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/httplib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/magic_enum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/pugixml" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/robin-map" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/sdl3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/sirit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/sirit/externals/SPIRV-Headers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/toml11" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/toml11/docs/themes/hugo-book" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/toml11/tests/extlib/doctest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/toml11/tests/extlib/json" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/tracy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/vma" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/vulkan-headers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/winpthreads" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/xbyak" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/xxhash" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/zlib-ng" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/zydis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/externals/zydis/dependencies/zycore" vcs="Git" />
+  </component>
+</project>
