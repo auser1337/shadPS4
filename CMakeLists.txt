@@ -258,6 +258,8 @@ set(NETWORK_LIBS src/core/libraries/network/http.cpp
                  src/core/libraries/network/ssl.h
                  src/core/libraries/network/net_client.cpp
                  src/core/libraries/network/net_client.h
+                 src/core/libraries/network/net_manager.cpp
+                 src/core/libraries/network/net_manager.h
 )
 
 set(AVPLAYER_LIB src/core/libraries/avplayer/avplayer_common.cpp

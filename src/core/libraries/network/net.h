@@ -64,6 +64,12 @@ struct OrbisNetSockaddrIn {
     char sin_zero[6];
 };
 
+enum NetSendFlags {
+    ORBIS_NET_MSG_DONTWAIT = 0x00000080,
+    ORBIS_NET_MSG_USECRYPTO = 0x00100000,
+    ORBIS_NET_MSG_USESIGNATURE = 0x00200000,
+};
+
 static thread_local int net_errno = 0;
 
 int PS4_SYSV_ABI in6addr_any();
@@ -247,7 +253,7 @@ int PS4_SYSV_ABI sceNetResolverStartNtoaMultipleRecordsEx();
 int PS4_SYSV_ABI sceNetSend();
 int PS4_SYSV_ABI sceNetSendmsg();
 int PS4_SYSV_ABI sceNetSendto(OrbisNetId s, void* buf, size_t len, int flags,
-                              const OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen);
+                              OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen);
 int PS4_SYSV_ABI sceNetSetDns6Info();
 int PS4_SYSV_ABI sceNetSetDns6InfoToKernel();
 int PS4_SYSV_ABI sceNetSetDnsInfo();

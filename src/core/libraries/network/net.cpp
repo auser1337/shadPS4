@@ -15,15 +15,12 @@
 #include "core/libraries/error_codes.h"
 #include "core/libraries/libs.h"
 #include "core/libraries/network/net.h"
-#include "core/libraries/network/net_client.h"
+#include "core/libraries/network/net_error.h"
+#include "core/libraries/network/net_manager.h"
 
 namespace Libraries::Net {
 
-// https://www.boost.org/doc/libs/1_86_0/doc/html/boost_asio/tutorial/tutdaytime1.html
-// https://github.com/boostorg/asio/blob/develop/example/cpp11/http/client/sync_client.cpp
-// https://github.com/mabrarov/asio_samples
-
-static auto client = Client();
+auto net_manager = NetManager();
 
 int PS4_SYSV_ABI in6addr_any() {
     LOG_ERROR(Lib_Net, "(STUBBED) called");
@@ -646,7 +643,17 @@ int PS4_SYSV_ABI sceNetGetIfnameNumList() {
 }
 
 int PS4_SYSV_ABI sceNetGetMacAddress(OrbisNetEtherAddr* addr, int flags) {
-    return Client::GetMacAddress(addr, flags);
+    LOG_INFO(Lib_Net, "called, addr = {}, flags = {}", reinterpret_cast<void*>(addr), flags);
+
+    if (!addr || flags != 0) {
+        LOG_ERROR(Lib_Net, "invalid arguments");
+        net_errno = EINVAL;
+        return ORBIS_NET_ERROR_EINVAL;
+    }
+
+    // Fuck you, 11:22:33:44:55:66
+    std::memcpy(addr->data, "\x11\x22\x33\x44\x55\x66", ORBIS_NET_ETHER_ADDR_LEN);
+    return ORBIS_OK;
 }
 
 int PS4_SYSV_ABI sceNetGetMemoryPoolStats() {
@@ -930,8 +937,11 @@ int PS4_SYSV_ABI sceNetSendmsg() {
 }
 
 int PS4_SYSV_ABI sceNetSendto(OrbisNetId s, void* buf, size_t len, int flags,
-                              const OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen) {
-    return client.SendTo(s, buf, len, flags, addr, addrlen);
+                              OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen) {
+    auto addr_in = reinterpret_cast<OrbisNetSockaddrIn*>(addr);
+
+    return net_manager.SendTo(s, boost::asio::buffer(buf, len),
+                              std::to_string(addr_in->sin_addr.s_addr_), addr_in->sin_port, flags);
 }
 
 int PS4_SYSV_ABI sceNetSetDns6Info() {
@@ -1045,7 +1055,22 @@ int PS4_SYSV_ABI sceNetShutdown() {
 }
 
 int PS4_SYSV_ABI sceNetSocket(const char* name, int family, SocketType type, int protocol) {
-    return client.Socket(name, family, type, protocol);
+    OrbisNetId id = 0;
+
+    switch (type) {
+    case ORBIS_NET_SOCK_STREAM:
+    case ORBIS_NET_SOCK_STREAM_P2P:
+        id = net_manager.CreateTcpSocket(type);
+        break;
+    case ORBIS_NET_SOCK_DGRAM:
+    case ORBIS_NET_SOCK_DGRAM_P2P:
+        id = net_manager.CreateUdpSocket(type);
+        break;
+    default:
+        UNIMPLEMENTED();
+    }
+
+    return id;
 }
 
 int PS4_SYSV_ABI sceNetSocketAbort() {
@@ -1054,7 +1079,7 @@ int PS4_SYSV_ABI sceNetSocketAbort() {
 }
 
 int PS4_SYSV_ABI sceNetSocketClose(OrbisNetId s) {
-    return client.SocketClose(s);
+    return net_manager.CloseSocket(s);
 }
 
 int PS4_SYSV_ABI sceNetSyncCreate() {
@@ -1129,16 +1154,18 @@ int PS4_SYSV_ABI sceNetEmulationSet() {
 
 int PS4_SYSV_ABI bind(OrbisNetId socket, const OrbisNetSockaddr* address,
                       OrbisNetSocklen_t address_len) {
-    return client.Bind(socket, address, address_len);
+    auto addr_in = reinterpret_cast<const OrbisNetSockaddrIn*>(address);
+
+    return net_manager.Bind(socket, std::to_string(addr_in->sin_addr.s_addr_), addr_in->sin_port);
 }
 
 int PS4_SYSV_ABI listen(OrbisNetId socket, int backlog) {
-    return client.Listen(socket, backlog);
+    return /*client.Listen(socket, backlog)*/ ORBIS_OK;
 }
 
 OrbisNetId PS4_SYSV_ABI accept(OrbisNetId socket, OrbisNetSockaddr* address,
                                OrbisNetSocklen_t* address_len) {
-    return client.Accept(socket, address, address_len);
+    return /*client.Accept(socket, address, address_len)*/ ORBIS_OK;
 }
 
 u32 PS4_SYSV_ABI htonl(u32 host32) {
