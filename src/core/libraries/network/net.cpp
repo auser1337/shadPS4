@@ -122,9 +122,8 @@ int PS4_SYSV_ABI sceNetBandwidthControlSetPolicy() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetBind(OrbisNetId s, const OrbisNetSockaddr* addr, u32 addrlen) {
-    LOG_ERROR(Lib_Net, "(STUBBED) called");
-    return ORBIS_OK;
+int PS4_SYSV_ABI sceNetBind(const OrbisNetId s, const OrbisNetSockaddr* addr, const u32 addrlen) {
+    return bind(s, reinterpret_cast<const sockaddr*>(addr), addrlen);
 }
 
 int PS4_SYSV_ABI sceNetClearDnsCache() {
@@ -642,7 +641,7 @@ int PS4_SYSV_ABI sceNetGetIfnameNumList() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI sceNetGetMacAddress(OrbisNetEtherAddr* addr, int flags) {
+int PS4_SYSV_ABI sceNetGetMacAddress(OrbisNetEtherAddr* addr, const int flags) {
     LOG_INFO(Lib_Net, "called, addr = {}, flags = {}", reinterpret_cast<void*>(addr), flags);
 
     if (!addr || flags != 0) {
@@ -938,10 +937,21 @@ int PS4_SYSV_ABI sceNetSendmsg() {
 
 int PS4_SYSV_ABI sceNetSendto(OrbisNetId s, void* buf, size_t len, int flags,
                               OrbisNetSockaddr* addr, OrbisNetSocklen_t addrlen) {
-    auto addr_in = reinterpret_cast<OrbisNetSockaddrIn*>(addr);
+    const auto addr_in = reinterpret_cast<OrbisNetSockaddrIn*>(addr);
+    auto address = std::to_string(addr_in->sin_addr.s_addr_);
 
-    return net_manager.SendTo(s, boost::asio::buffer(buf, len),
-                              std::to_string(addr_in->sin_addr.s_addr_), addr_in->sin_port, flags);
+    if (address == "0") {
+        LOG_INFO(Lib_Net, "Sending data to 127.0.0.1 (address == '0')");
+        address = "127.0.0.1";
+    }
+
+    try {
+        return net_manager.SendTo(s, boost::asio::mutable_buffer(buf, len), address, addrlen,
+                                  flags);
+    } catch (const std::exception& e) {
+        LOG_ERROR(Lib_Net, e.what());
+        return ORBIS_NET_ERROR_EINVAL;
+    }
 }
 
 int PS4_SYSV_ABI sceNetSetDns6Info() {
@@ -1152,11 +1162,17 @@ int PS4_SYSV_ABI sceNetEmulationSet() {
     return ORBIS_OK;
 }
 
-int PS4_SYSV_ABI bind(OrbisNetId socket, const OrbisNetSockaddr* address,
+int PS4_SYSV_ABI bind(const OrbisNetId socket, const OrbisNetSockaddr* address,
                       OrbisNetSocklen_t address_len) {
-    auto addr_in = reinterpret_cast<const OrbisNetSockaddrIn*>(address);
+    const auto addr_in = reinterpret_cast<const OrbisNetSockaddrIn*>(address);
 
-    return net_manager.Bind(socket, std::to_string(addr_in->sin_addr.s_addr_), addr_in->sin_port);
+    try {
+        return net_manager.Bind(socket, std::to_string(addr_in->sin_addr.s_addr_),
+                                addr_in->sin_port);
+    } catch (const std::exception& e) {
+        LOG_ERROR(Lib_Net, e.what());
+        return ORBIS_FAIL;
+    }
 }
 
 int PS4_SYSV_ABI listen(OrbisNetId socket, int backlog) {

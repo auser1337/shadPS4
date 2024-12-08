@@ -26,8 +26,8 @@ public:
 
     /* Socket communication */
     int Send(OrbisNetId s, boost::asio::mutable_buffer buffer, int flags = 0);
-    int SendTo(OrbisNetId s, boost::asio::mutable_buffer buffer, const std::string& address,
-               u16 port, int flags = 0);
+    int SendTo(OrbisNetId s, boost::asio::mutable_buffer buffer, const std::string& address, u16 port, int flags = 0);
+    int Accept(OrbisNetId s, int backlog);
 
 private:
     struct Socket {
@@ -35,7 +35,7 @@ private:
         using UdpSocketPtr = std::shared_ptr<boost::asio::ip::udp::socket>;
 
         SocketType type;
-        std::variant<TcpSocketPtr, UdpSocketPtr> internal_socket;
+        std::variant<TcpSocketPtr, UdpSocketPtr> asio_socket;
     };
 
     boost::asio::io_context m_io_context;
@@ -43,7 +43,8 @@ private:
     boost::asio::ip::tcp::resolver m_tcp_resolver;
     boost::asio::ip::udp::resolver m_udp_resolver;
 
-    static inline int FailAndSetErrno(int err); // Do I really need this?
+    boost::asio::ip::tcp::endpoint ResolveTcpEndpoint(const std::string& address, u16 port);
+    boost::asio::ip::udp::endpoint ResolveUdpEndpoint(const std::string& address, u16 port);
 };
 
 } // namespace Libraries::Net
