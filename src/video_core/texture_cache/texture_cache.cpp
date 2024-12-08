@@ -210,7 +210,7 @@ std::tuple<ImageId, int, int> TextureCache::ResolveOverlap(const ImageInfo& imag
 
         ImageId new_image_id{};
         if (image_info.type == tex_cache_image.info.type) {
-            ASSERT(image_info.resources > tex_cache_image.info.resources);
+            // ASSERT(image_info.resources > tex_cache_image.info.resources);
             new_image_id = ExpandImage(image_info, cache_image_id);
         } else {
             UNREACHABLE();

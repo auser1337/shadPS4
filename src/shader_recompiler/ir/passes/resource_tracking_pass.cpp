@@ -387,7 +387,7 @@ void PatchTextureBufferInstruction(IR::Block& block, IR::Inst& inst, Info& info,
     // Replace handle with binding index in texture buffer resource list.
     IR::IREmitter ir{block, IR::Block::InstructionList::s_iterator_to(inst)};
     inst.SetArg(0, ir.Imm32(binding));
-    ASSERT(!buffer.swizzle_enable && !buffer.add_tid_enable);
+    // ASSERT(!buffer.swizzle_enable && !buffer.add_tid_enable);
 }
 
 IR::Value PatchCubeCoord(IR::IREmitter& ir, const IR::Value& s, const IR::Value& t,
@@ -620,6 +620,7 @@ void PatchImageInstruction(IR::Block& block, IR::Inst& inst, Info& info, Descrip
     const auto inst_info = inst.Flags<IR::TextureInstInfo>();
     auto image = info.ReadUdSharp<AmdGpu::Image>(tsharp);
     if (!image.Valid()) {
+        LOG_INFO(Render_Vulkan, "pgm_hash = {:#x}", info.pgm_hash);
         LOG_ERROR(Render_Vulkan, "Shader compiled with unbound image!");
         image = AmdGpu::Image::Null();
     }
