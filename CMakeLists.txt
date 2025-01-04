@@ -249,6 +249,9 @@ set(KERNEL_LIB src/core/libraries/kernel/sync/mutex.cpp
                src/core/libraries/kernel/time.h
                src/core/libraries/kernel/orbis_error.h
                src/core/libraries/kernel/posix_error.h
+               src/core/libraries/kernel/posix_net.h
+               src/core/libraries/kernel/posix_net.cpp
+               src/core/libraries/kernel/net_connection.h
 )
 
 set(NETWORK_LIBS src/core/libraries/network/http.cpp
