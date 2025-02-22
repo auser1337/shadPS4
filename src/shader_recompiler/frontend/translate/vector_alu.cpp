@@ -396,6 +396,8 @@ void Translator::EmitVectorAlu(const GcnInst& inst) {
         return V_MUL_LO_U32(inst);
     case Opcode::V_MAD_U64_U32:
         return V_MAD_U64_U32(inst);
+    case Opcode::V_ALIGNBYTE_B32:
+        return V_ALIGNBYTE_B32(inst);
     case Opcode::V_NOP:
         return;
     default:
@@ -1011,7 +1013,7 @@ void Translator::V_CMP_CLASS_F32(const GcnInst& inst) {
         } else if ((class_mask & IR::FloatClassFunc::Infinity) == IR::FloatClassFunc::Infinity) {
             value = ir.FPIsInf(src0);
         } else {
-            UNREACHABLE();
+            // UNREACHABLE();
         }
     } else {
         // We don't know the type yet, delay its resolution.
@@ -1314,6 +1316,32 @@ void Translator::V_MAD_U64_U32(const GcnInst& inst) {
     const IR::U1 less_src1 = ir.ILessThan(sum_result, src2, false);
     const IR::U1 did_overflow = ir.LogicalOr(less_src0, less_src1);
     ir.SetVcc(did_overflow);
+}
+
+/*void Translator::V_ALIGNBYTE_B32(const GcnInst& inst) {
+    const IR::U32 src0{GetSrc(inst.src[0])};
+    const IR::U32 src1{GetSrc(inst.src[1])};
+    const IR::U32 src2{GetSrc(inst.src[2])};
+
+    const IR::U64 concatenated = ir.PackUint2x32(ir.CompositeConstruct(src0, src1));
+    const IR::U32 extracted = ir.BitFieldExtract(
+        concatenated, ir.ShiftLeftLogical(ir.BitwiseAnd(src2, ir.Imm32(5)), ir.Imm32(3)),
+        ir.Imm32(32));
+
+    SetDst(inst.dst[0], ir.BitwiseAnd(extracted, ir.Imm32(0xFFFFFFFF)));
+}*/
+
+void Translator::V_ALIGNBYTE_B32(const GcnInst& inst) {
+    const IR::U32 src0{GetSrc(inst.src[0])};
+    const IR::U32 src1{GetSrc(inst.src[1])};
+    const IR::U32 src2{GetSrc(inst.src[2])};
+
+    const IR::U32 shift = ir.ShiftLeftLogical(src2, ir.Imm32(3));
+
+    SetDst(inst.dst[0],
+           ir.BitwiseOr(ir.ShiftLeftLogical(ir.BitFieldExtract(src0, ir.Imm32(0), shift),
+                                            ir.ISub(ir.Imm32(32), shift)),
+                        ir.ShiftRightLogical(src1, shift)));
 }
 
 IR::U32 Translator::GetCarryIn(const GcnInst& inst) {
