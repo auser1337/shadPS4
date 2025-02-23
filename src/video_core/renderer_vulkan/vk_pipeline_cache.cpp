@@ -259,6 +259,67 @@ const ComputePipeline* PipelineCache::GetComputePipeline() {
     return it->second.get();
 }
 
+bool ShouldSkipShader(u64 shader_hash, const char* shader_type) {
+    // First -> last order
+    static std::vector<u64> skip_hashes = {
+        // Instruction format table incomplete for opcode  (1087, encoding = 0xd8000000)
+        0x64690fbc,
+
+        // tile_manager.cpp:273 operator(): Assertion Failed!
+        0xe54d1751,
+        0xd18c6255,
+        0x880d99f3,
+
+        // Shader translation has failed
+        0xb0b0e9b6,
+
+        // Instruction format table incomplete for opcode  (1087, encoding = 0xd8000000)
+        0x478ebc4d,
+        0x3de56072,
+        0x8cfbe3ae,
+        0xffba2fe6,
+        0xf9137362,
+        0xb547ddf1,
+        0xdf370491,
+
+        // decode.cpp:1035 operator(): Assertion Failed!
+        0xc00d7dfa,
+        0x63f175e0,
+
+        // Non immediate offset not supported
+        0xdda1ded7,
+
+        // Instruction format table incomplete for opcode  (1087, encoding = 0xd8000000)
+        0x5338ddf9,
+        0xa5ff9e18,
+
+        // decode.cpp:1035 operator(): Assertion Failed!
+        0x5db7683e,
+
+        // Instruction format table incomplete for opcode  (1087, encoding = 0xd8000000)
+        0xe40f43d5,
+
+        // Instruction format table incomplete for opcode  (480, encoding = 0xd0000000)
+        0xbb8c582c,
+
+        // Instruction format table incomplete for opcode  (1087, encoding = 0xd8000000)
+        0xfe583397,
+
+        // Shader translation has failed
+        0x198fde7,
+
+        // Non immediate offset not supported
+        0x302ec341,
+        0x464da96,
+        0x9ee73dd2,
+    };
+    if (std::ranges::contains(skip_hashes, shader_hash)) {
+        LOG_WARNING(Render_Vulkan, "Skipped {} shader hash {:#x}.", shader_type, shader_hash);
+        return true;
+    }
+    return false;
+}
+
 bool PipelineCache::RefreshGraphicsKey() {
     std::memset(&graphics_key, 0, sizeof(GraphicsPipelineKey));
 
@@ -382,6 +443,10 @@ bool PipelineCache::RefreshGraphicsKey() {
             return false;
         }
 
+        if (ShouldSkipShader(bininfo.shader_hash, "graphics")) {
+            return false;
+        }
+
         auto params = Liverpool::GetParams(*pgm);
         std::optional<Shader::Gcn::FetchShaderData> fetch_shader_;
         std::tie(infos[stage_out_idx], modules[stage_out_idx], fetch_shader_,
@@ -490,6 +555,9 @@ bool PipelineCache::RefreshComputeKey() {
     Shader::Backend::Bindings binding{};
     const auto& cs_pgm = liverpool->GetCsRegs();
     const auto cs_params = Liverpool::GetParams(cs_pgm);
+    if (ShouldSkipShader(cs_params.hash, "compute")) {
+        return false;
+    }
     std::tie(infos[0], modules[0], fetch_shader, compute_key.value) =
         GetProgram(Shader::Stage::Compute, LogicalStage::Compute, cs_params, binding);
     return true;

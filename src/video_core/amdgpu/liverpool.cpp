@@ -671,9 +671,10 @@ Liverpool::Task Liverpool::ProcessGraphics(std::span<const u32> dcb, std::span<c
                     num_submits == mapped_queues[GfxQueueId].submits.size()) {
                     vo_port->WaitVoLabel([&] { return wait_reg_mem->Test(); });
                 }
-                while (!wait_reg_mem->Test()) {
+                /*while (!wait_reg_mem->Test()) {
+                    LOG_INFO(Render_Vulkan, "FUCK");
                     YIELD_GFX();
-                }
+                }*/
                 break;
             }
             case PM4ItOpcode::IndirectBuffer: {

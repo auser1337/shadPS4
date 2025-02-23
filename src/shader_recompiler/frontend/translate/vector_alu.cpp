@@ -1318,19 +1318,6 @@ void Translator::V_MAD_U64_U32(const GcnInst& inst) {
     ir.SetVcc(did_overflow);
 }
 
-/*void Translator::V_ALIGNBYTE_B32(const GcnInst& inst) {
-    const IR::U32 src0{GetSrc(inst.src[0])};
-    const IR::U32 src1{GetSrc(inst.src[1])};
-    const IR::U32 src2{GetSrc(inst.src[2])};
-
-    const IR::U64 concatenated = ir.PackUint2x32(ir.CompositeConstruct(src0, src1));
-    const IR::U32 extracted = ir.BitFieldExtract(
-        concatenated, ir.ShiftLeftLogical(ir.BitwiseAnd(src2, ir.Imm32(5)), ir.Imm32(3)),
-        ir.Imm32(32));
-
-    SetDst(inst.dst[0], ir.BitwiseAnd(extracted, ir.Imm32(0xFFFFFFFF)));
-}*/
-
 void Translator::V_ALIGNBYTE_B32(const GcnInst& inst) {
     const IR::U32 src0{GetSrc(inst.src[0])};
     const IR::U32 src1{GetSrc(inst.src[1])};
