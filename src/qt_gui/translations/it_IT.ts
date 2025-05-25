@@ -138,7 +138,7 @@
     </message>
     <message>
       <source>File Exists</source>
-      <translation>Il file è presente</translation>
+      <translation>Il file esiste già </translation>
     </message>
     <message>
       <source>File already exists. Do you want to replace it?</source>
@@ -883,10 +883,6 @@
       <translation>Errore nella creazione della scorciatoia!</translation>
     </message>
     <message>
-      <source>Install PKG</source>
-      <translation>Installa PKG</translation>
-    </message>
-    <message>
       <source>Game</source>
       <translation>Gioco</translation>
     </message>
@@ -976,25 +972,6 @@
     <message>
       <source>Keybindings</source>
       <translation>Associazioni dei pulsanti</translation>
-    </message>
-  </context>
-  <context>
-    <name>InstallDirSelect</name>
-    <message>
-      <source>shadPS4 - Choose directory</source>
-      <translation>shadPS4 - Scegli cartella</translation>
-    </message>
-    <message>
-      <source>Select which directory you want to install to.</source>
-      <translation>Seleziona in quale cartella vuoi effettuare l&apos;installazione.</translation>
-    </message>
-    <message>
-      <source>Install All Queued to Selected Folder</source>
-      <translation>Installa tutto in coda nella Cartella Selezionata</translation>
-    </message>
-    <message>
-      <source>Delete PKG File on Install</source>
-      <translation>Elimina file PKG dopo Installazione</translation>
     </message>
   </context>
   <context>
@@ -1215,10 +1192,6 @@
       <translation>Apri/Aggiungi cartella Elf</translation>
     </message>
     <message>
-      <source>Install Packages (PKG)</source>
-      <translation>Installa Pacchetti (PKG)</translation>
-    </message>
-    <message>
       <source>Boot Game</source>
       <translation>Avvia Gioco</translation>
     </message>
@@ -1233,10 +1206,6 @@
     <message>
       <source>Configure...</source>
       <translation>Configura...</translation>
-    </message>
-    <message>
-      <source>Install application from a .pkg file</source>
-      <translation>Installa applicazione da un file .pkg</translation>
     </message>
     <message>
       <source>Recent Games</source>
@@ -1307,8 +1276,12 @@
       <translation>Scarica Lista Giochi</translation>
     </message>
     <message>
-      <source>PKG Viewer</source>
-      <translation>Visualizzatore PKG</translation>
+      <source>Trophy Viewer</source>
+      <translation>Visualizzatore Trofei</translation>
+    </message>
+    <message>
+      <source>No games found. Please add your games to your library first.</source>
+      <translation>Nessun gioco trovato. Aggiungi prima i tuoi giochi alla tua libreria.</translation>
     </message>
     <message>
       <source>Search...</source>
@@ -1375,10 +1348,6 @@
       <translation>Elenco giochi</translation>
     </message>
     <message>
-      <source> * Unsupported Vulkan Version</source>
-      <translation> * Versione Vulkan non supportata</translation>
-    </message>
-    <message>
       <source>Download Cheats For All Installed Games</source>
       <translation>Scarica Trucchi per tutti i giochi installati</translation>
     </message>
@@ -1419,84 +1388,12 @@
       <translation>Si può selezionare solo un file!</translation>
     </message>
     <message>
-      <source>PKG Extraction</source>
-      <translation>Estrazione file PKG</translation>
-    </message>
-    <message>
-      <source>Patch detected!</source>
-      <translation>Patch rilevata!</translation>
-    </message>
-    <message>
-      <source>PKG and Game versions match: </source>
-      <translation>Le versioni di PKG e del Gioco corrispondono: </translation>
-    </message>
-    <message>
-      <source>Would you like to overwrite?</source>
-      <translation>Vuoi sovrascrivere?</translation>
-    </message>
-    <message>
-      <source>PKG Version %1 is older than installed version: </source>
-      <translation>La versione PKG %1 è più vecchia rispetto alla versione installata: </translation>
-    </message>
-    <message>
-      <source>Game is installed: </source>
-      <translation>Gioco installato: </translation>
-    </message>
-    <message>
-      <source>Would you like to install Patch: </source>
-      <translation>Vuoi installare la patch: </translation>
-    </message>
-    <message>
-      <source>DLC Installation</source>
-      <translation>Installazione DLC</translation>
-    </message>
-    <message>
-      <source>Would you like to install DLC: %1?</source>
-      <translation>Vuoi installare il DLC: %1?</translation>
-    </message>
-    <message>
-      <source>DLC already installed:</source>
-      <translation>DLC già installato:</translation>
-    </message>
-    <message>
-      <source>Game already installed</source>
-      <translation>Gioco già installato</translation>
-    </message>
-    <message>
-      <source>PKG ERROR</source>
-      <translation>ERRORE PKG</translation>
-    </message>
-    <message>
-      <source>Extracting PKG %1/%2</source>
-      <translation>Estrazione file PKG %1/%2</translation>
-    </message>
-    <message>
-      <source>Extraction Finished</source>
-      <translation>Estrazione Completata</translation>
-    </message>
-    <message>
-      <source>Game successfully installed at %1</source>
-      <translation>Gioco installato correttamente in %1</translation>
-    </message>
-    <message>
-      <source>File doesn&apos;t appear to be a valid PKG file</source>
-      <translation>Il file sembra non essere un file PKG valido</translation>
-    </message>
-    <message>
       <source>Run Game</source>
       <translation>Esegui Gioco</translation>
     </message>
     <message>
       <source>Eboot.bin file not found</source>
       <translation>File Eboot.bin non trovato</translation>
-    </message>
-    <message>
-      <source>PKG File (*.PKG *.pkg)</source>
-      <translation>File PKG (*.PKG *.pkg)</translation>
-    </message>
-    <message>
-      <source>PKG is a patch or DLC, please install the game first!</source>
-      <translation>Il file PKG è una patch o DLC, si prega di installare prima il gioco!</translation>
     </message>
     <message>
       <source>Game is already running!</source>
@@ -1506,72 +1403,45 @@
       <source>shadPS4</source>
       <translation>shadPS4</translation>
     </message>
-  </context>
-  <context>
-    <name>PKGViewer</name>
     <message>
-      <source>Open Folder</source>
-      <translation>Apri Cartella</translation>
+      <source>Play</source>
+      <translation>Riproduci</translation>
     </message>
     <message>
-      <source>PKG ERROR</source>
-      <translation>ERRORE PKG</translation>
+      <source>Pause</source>
+      <translation>Pausa</translation>
     </message>
     <message>
-      <source>Name</source>
-      <translation>Nome</translation>
+      <source>Stop</source>
+      <translation>Arresta</translation>
     </message>
     <message>
-      <source>Serial</source>
-      <translation>Seriale</translation>
+      <source>Restart</source>
+      <translation>Riavvia</translation>
     </message>
     <message>
-      <source>Installed</source>
-      <translation>Installato</translation>
+      <source>Full Screen</source>
+      <translation>Schermo Intero</translation>
     </message>
     <message>
-      <source>Size</source>
-      <translation>Dimensione</translation>
+      <source>Controllers</source>
+      <translation>Controller</translation>
     </message>
     <message>
-      <source>Category</source>
-      <translation>Categoria</translation>
+      <source>Keyboard</source>
+      <translation>Tastiera</translation>
     </message>
     <message>
-      <source>Type</source>
-      <translation>Tipo</translation>
+      <source>Refresh List</source>
+      <translation>Aggiorna Lista</translation>
     </message>
     <message>
-      <source>App Ver</source>
-      <translation>Vers. App.</translation>
+      <source>Resume</source>
+      <translation>Riprendi</translation>
     </message>
     <message>
-      <source>FW</source>
-      <translation>FW</translation>
-    </message>
-    <message>
-      <source>Region</source>
-      <translation>Regione</translation>
-    </message>
-    <message>
-      <source>Flags</source>
-      <translation>Segnalazioni</translation>
-    </message>
-    <message>
-      <source>Path</source>
-      <translation>Percorso</translation>
-    </message>
-    <message>
-      <source>File</source>
-      <translation>File</translation>
-    </message>
-    <message>
-      <source>Unknown</source>
-      <translation>Sconosciuto</translation>
-    </message>
-    <message>
-      <source>Package</source>
-      <translation>Pacchetto</translation>
+      <source>Show Labels Under Icons</source>
+      <translation>Mostra Etichette Sotto Icone</translation>
     </message>
   </context>
   <context>
@@ -1599,10 +1469,6 @@
     <message>
       <source>Emulator</source>
       <translation>Emulatore</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder</source>
-      <translation>Abilita Cartella Aggiornamenti Separata</translation>
     </message>
     <message>
       <source>Default tab when opening settings</source>
@@ -1867,10 +1733,6 @@
     <message>
       <source>Emulator Language:\nSets the language of the emulator&apos;s user interface.</source>
       <translation>Lingua dell&apos;Emulatore:\nImposta la lingua dell&apos;interfaccia utente dell&apos;emulatore.</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder:\nEnables installing game updates into a separate folder for easy management.\nThis can be manually created by adding the extracted update to the game folder with the name &quot;CUSA00000-UPDATE&quot; where the CUSA ID matches the game&apos;s ID.</source>
-      <translation>Abilita Cartella Aggiornamenti Separata:\nAbilita l&apos;installazione degli aggiornamenti in una cartella separata per una più facile gestione.</translation>
     </message>
     <message>
       <source>Show Splash Screen:\nShows the game&apos;s splash screen (a special image) while the game is starting.</source>
@@ -2184,12 +2046,20 @@
       <source>Open the custom trophy images/sounds folder:\nYou can add custom images to the trophies and an audio.\nAdd the files to custom_trophy with the following names:\ntrophy.wav OR trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNote: The sound will only work in QT versions.</source>
       <translation>Apri la cartella personalizzata delle immagini/suoni trofei:\nÈ possibile aggiungere immagini personalizzate ai trofei e un audio.\nAggiungi i file a custom_trophy con i seguenti nomi:\ntrophy.wav OPPURE trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNota: Il suono funzionerà solo nelle versioni QT.</translation>
     </message>
+    <message>
+      <source> * Unsupported Vulkan Version</source>
+      <translation> * Versione Vulkan non supportata</translation>
+    </message>
   </context>
   <context>
     <name>TrophyViewer</name>
     <message>
       <source>Trophy Viewer</source>
       <translation>Visualizzatore Trofei</translation>
+    </message>
+    <message>
+      <source>Select Game:</source>
+      <translation>Seleziona Gioco:</translation>
     </message>
     <message>
       <source>Progress</source>

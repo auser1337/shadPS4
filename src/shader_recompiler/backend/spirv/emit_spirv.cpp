@@ -154,6 +154,7 @@ void Traverse(EmitContext& ctx, const IR::Program& program) {
             for (IR::Inst& inst : node.data.block->Instructions()) {
                 EmitInst(ctx, &inst);
             }
+            ctx.first_to_last_label_map[label.value] = ctx.last_label;
             break;
         }
         case IR::AbstractSyntaxNode::Type::If: {
@@ -270,6 +271,10 @@ void SetupCapabilities(const Info& info, const Profile& profile, EmitContext& ct
     if (info.has_image_query) {
         ctx.AddCapability(spv::Capability::ImageQuery);
     }
+    if (info.uses_atomic_float_min_max && profile.supports_image_fp32_atomic_min_max) {
+        ctx.AddExtension("SPV_EXT_shader_atomic_float_min_max");
+        ctx.AddCapability(spv::Capability::AtomicFloat32MinMaxEXT);
+    }
     if (info.uses_lane_id) {
         ctx.AddCapability(spv::Capability::GroupNonUniform);
     }
@@ -293,6 +298,10 @@ void SetupCapabilities(const Info& info, const Profile& profile, EmitContext& ct
     }
     if (stage == LogicalStage::TessellationControl || stage == LogicalStage::TessellationEval) {
         ctx.AddCapability(spv::Capability::Tessellation);
+    }
+    if (info.dma_types != IR::Type::Void) {
+        ctx.AddCapability(spv::Capability::PhysicalStorageBufferAddresses);
+        ctx.AddExtension("SPV_KHR_physical_storage_buffer");
     }
 }
 
@@ -335,8 +344,7 @@ void DefineEntryPoint(const Info& info, EmitContext& ctx, Id main) {
             ctx.AddExecutionMode(main, spv::ExecutionMode::OriginUpperLeft);
         }
         if (info.has_discard) {
-            ctx.AddExtension("SPV_EXT_demote_to_helper_invocation");
-            ctx.AddCapability(spv::Capability::DemoteToHelperInvocationEXT);
+            ctx.AddCapability(spv::Capability::DemoteToHelperInvocation);
         }
         if (info.stores.GetAny(IR::Attribute::Depth)) {
             ctx.AddExecutionMode(main, spv::ExecutionMode::DepthReplacing);
@@ -384,7 +392,7 @@ void SetupFloatMode(EmitContext& ctx, const Profile& profile, const RuntimeInfo&
 void PatchPhiNodes(const IR::Program& program, EmitContext& ctx) {
     auto inst{program.blocks.front()->begin()};
     size_t block_index{0};
-    ctx.PatchDeferredPhi([&](size_t phi_arg) {
+    ctx.PatchDeferredPhi([&](u32 phi_arg, Id first_parent) {
         if (phi_arg == 0) {
             ++inst;
             if (inst == program.blocks[block_index]->end() ||
@@ -395,7 +403,9 @@ void PatchPhiNodes(const IR::Program& program, EmitContext& ctx) {
                 } while (inst->GetOpcode() != IR::Opcode::Phi);
             }
         }
-        return ctx.Def(inst->Arg(phi_arg));
+        const Id arg = ctx.Def(inst->Arg(phi_arg));
+        const Id parent = ctx.first_to_last_label_map[first_parent.value];
+        return std::make_pair(arg, parent);
     });
 }
 } // Anonymous namespace

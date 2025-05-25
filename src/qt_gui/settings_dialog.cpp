@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2024 shadPS4 Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include <vector>
 #include <QCompleter>
 #include <QDirIterator>
 #include <QFileDialog>
@@ -9,7 +10,7 @@
 #include <fmt/format.h>
 
 #include "common/config.h"
-#include "common/version.h"
+#include "common/scm_rev.h"
 #include "qt_gui/compatibility_info.h"
 #ifdef ENABLE_DISCORD_RPC
 #include "common/discord_rpc_handler.h"
@@ -25,6 +26,7 @@
 #include "common/logging/filter.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
+#include "video_core/renderer_vulkan/vk_instance.h"
 QStringList languageNames = {"Arabic",
                              "Czech",
                              "Danish",
@@ -67,8 +69,9 @@ QMap<QString, QString> chooseHomeTabMap;
 int backgroundImageOpacitySlider_backup;
 int bgm_volume_backup;
 
-SettingsDialog::SettingsDialog(std::span<const QString> physical_devices,
-                               std::shared_ptr<CompatibilityInfoClass> m_compat_info,
+static std::vector<QString> m_physical_devices;
+
+SettingsDialog::SettingsDialog(std::shared_ptr<CompatibilityInfoClass> m_compat_info,
                                QWidget* parent)
     : QDialog(parent), ui(new Ui::SettingsDialog) {
     ui->setupUi(this);
@@ -89,9 +92,23 @@ SettingsDialog::SettingsDialog(std::span<const QString> physical_devices,
                         {tr("Input"), "Input"},       {tr("Paths"), "Paths"},
                         {tr("Debug"), "Debug"}};
 
+    if (m_physical_devices.empty()) {
+        // Populate cache of physical devices.
+        Vulkan::Instance instance(false, false);
+        auto physical_devices = instance.GetPhysicalDevices();
+        for (const vk::PhysicalDevice physical_device : physical_devices) {
+            auto prop = physical_device.getProperties();
+            QString name = QString::fromUtf8(prop.deviceName, -1);
+            if (prop.apiVersion < Vulkan::TargetVulkanApiVersion) {
+                name += tr(" * Unsupported Vulkan Version");
+            }
+            m_physical_devices.push_back(name);
+        }
+    }
+
     // Add list of available GPUs
     ui->graphicsAdapterBox->addItem(tr("Auto Select")); // -1, auto selection
-    for (const auto& device : physical_devices) {
+    for (const auto& device : m_physical_devices) {
         ui->graphicsAdapterBox->addItem(device);
     }
 
@@ -246,12 +263,13 @@ SettingsDialog::SettingsDialog(std::span<const QString> physical_devices,
     // PATH TAB
     {
         connect(ui->addFolderButton, &QPushButton::clicked, this, [this]() {
-            const auto config_dir = Config::getGameInstallDirs();
             QString file_path_string =
                 QFileDialog::getExistingDirectory(this, tr("Directory to install games"));
             auto file_path = Common::FS::PathFromQString(file_path_string);
-            if (!file_path.empty() && Config::addGameInstallDir(file_path)) {
+            if (!file_path.empty() && Config::addGameInstallDir(file_path, true)) {
                 QListWidgetItem* item = new QListWidgetItem(file_path_string);
+                item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+                item->setCheckState(Qt::Checked);
                 ui->gameFoldersListWidget->addItem(item);
             }
         });
@@ -317,7 +335,6 @@ SettingsDialog::SettingsDialog(std::span<const QString> physical_devices,
         // General
         ui->consoleLanguageGroupBox->installEventFilter(this);
         ui->emulatorLanguageGroupBox->installEventFilter(this);
-        ui->separateUpdatesCheckBox->installEventFilter(this);
         ui->showSplashCheckBox->installEventFilter(this);
         ui->discordRPCCheckbox->installEventFilter(this);
         ui->userName->installEventFilter(this);
@@ -449,8 +466,6 @@ void SettingsDialog::LoadValuesFromConfig() {
     QString translatedText_FullscreenMode =
         screenModeMap.key(QString::fromStdString(Config::getFullscreenMode()));
     ui->displayModeComboBox->setCurrentText(translatedText_FullscreenMode);
-    ui->separateUpdatesCheckBox->setChecked(
-        toml::find_or<bool>(data, "General", "separateUpdateEnabled", false));
     ui->gameSizeCheckBox->setChecked(toml::find_or<bool>(data, "GUI", "loadGameSizeEnabled", true));
     ui->showSplashCheckBox->setChecked(toml::find_or<bool>(data, "General", "showSplash", false));
     QString translatedText_logType = logTypeMap.key(QString::fromStdString(Config::getLogType()));
@@ -493,7 +508,7 @@ void SettingsDialog::LoadValuesFromConfig() {
     QString updateChannel = QString::fromStdString(Config::getUpdateChannel());
     ui->updateComboBox->setCurrentText(
         channelMap.key(updateChannel != "Release" && updateChannel != "Nightly"
-                           ? (Common::isRelease ? "Release" : "Nightly")
+                           ? (Common::g_is_release ? "Release" : "Nightly")
                            : updateChannel));
 #endif
 
@@ -599,8 +614,6 @@ void SettingsDialog::updateNoteTextEdit(const QString& elementName) {
         text = tr("Console Language:\\nSets the language that the PS4 game uses.\\nIt's recommended to set this to a language the game supports, which will vary by region.");
     } else if (elementName == "emulatorLanguageGroupBox") {
         text = tr("Emulator Language:\\nSets the language of the emulator's user interface.");
-    } else if (elementName == "separateUpdatesCheckBox") {
-        text = tr("Enable Separate Update Folder:\\nEnables installing game updates into a separate folder for easy management.\\nThis can be manually created by adding the extracted update to the game folder with the name \"CUSA00000-UPDATE\" where the CUSA ID matches the game's ID.");
     } else if (elementName == "showSplashCheckBox") {
         text = tr("Show Splash Screen:\\nShows the game's splash screen (a special image) while the game is starting.");
     } else if (elementName == "discordRPCCheckbox") {
@@ -759,7 +772,6 @@ void SettingsDialog::UpdateSettings() {
     Config::setVblankDiv(ui->vblankSpinBox->value());
     Config::setDumpShaders(ui->dumpShadersCheckBox->isChecked());
     Config::setNullGpu(ui->nullGpuCheckBox->isChecked());
-    Config::setSeparateUpdateEnabled(ui->separateUpdatesCheckBox->isChecked());
     Config::setLoadGameSizeEnabled(ui->gameSizeCheckBox->isChecked());
     Config::setShowSplash(ui->showSplashCheckBox->isChecked());
     Config::setDebugDump(ui->debugDump->isChecked());
@@ -783,6 +795,17 @@ void SettingsDialog::UpdateSettings() {
     emit BackgroundOpacityChanged(ui->backgroundImageOpacitySlider->value());
     Config::setShowBackgroundImage(ui->showBackgroundImageCheckBox->isChecked());
 
+    std::vector<Config::GameInstallDir> dirs_with_states;
+    for (int i = 0; i < ui->gameFoldersListWidget->count(); i++) {
+        QListWidgetItem* item = ui->gameFoldersListWidget->item(i);
+        QString path_string = item->text();
+        auto path = Common::FS::PathFromQString(path_string);
+        bool enabled = (item->checkState() == Qt::Checked);
+
+        dirs_with_states.push_back({path, enabled});
+    }
+    Config::setAllGameInstallDirs(dirs_with_states);
+
 #ifdef ENABLE_DISCORD_RPC
     auto* rpc = Common::Singleton<DiscordRPCHandler::RPC>::Instance();
     if (Config::getEnableDiscordRPC()) {
@@ -797,6 +820,7 @@ void SettingsDialog::UpdateSettings() {
 }
 
 void SettingsDialog::ResetInstallFolders() {
+    ui->gameFoldersListWidget->clear();
 
     std::filesystem::path userdir = Common::FS::GetUserPath(Common::FS::PathType::UserDir);
     const toml::value data = toml::parse(userdir / "config.toml");
@@ -804,22 +828,37 @@ void SettingsDialog::ResetInstallFolders() {
     if (data.contains("GUI")) {
         const toml::value& gui = data.at("GUI");
         const auto install_dir_array =
-            toml::find_or<std::vector<std::string>>(gui, "installDirs", {});
-        std::vector<std::filesystem::path> settings_install_dirs_config = {};
+            toml::find_or<std::vector<std::u8string>>(gui, "installDirs", {});
 
-        for (const auto& dir : install_dir_array) {
-            if (std::find(settings_install_dirs_config.begin(), settings_install_dirs_config.end(),
-                          dir) == settings_install_dirs_config.end()) {
-                settings_install_dirs_config.push_back(dir);
-            }
+        std::vector<bool> install_dirs_enabled;
+        try {
+            install_dirs_enabled = Config::getGameInstallDirsEnabled();
+        } catch (...) {
+            // If it does not exist, assume that all are enabled.
+            install_dirs_enabled.resize(install_dir_array.size(), true);
         }
 
-        for (const auto& dir : settings_install_dirs_config) {
+        if (install_dirs_enabled.size() < install_dir_array.size()) {
+            install_dirs_enabled.resize(install_dir_array.size(), true);
+        }
+
+        std::vector<Config::GameInstallDir> settings_install_dirs_config;
+
+        for (size_t i = 0; i < install_dir_array.size(); i++) {
+            std::filesystem::path dir = install_dir_array[i];
+            bool enabled = install_dirs_enabled[i];
+
+            settings_install_dirs_config.push_back({dir, enabled});
+
             QString path_string;
             Common::FS::PathToQString(path_string, dir);
+
             QListWidgetItem* item = new QListWidgetItem(path_string);
+            item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+            item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
             ui->gameFoldersListWidget->addItem(item);
         }
-        Config::setGameInstallDirs(settings_install_dirs_config);
+
+        Config::setAllGameInstallDirs(settings_install_dirs_config);
     }
 }

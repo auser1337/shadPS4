@@ -5,6 +5,7 @@
 
 #include <imgui.h>
 
+#include "SDL3/SDL_log.h"
 #include "common/config.h"
 #include "common/singleton.h"
 #include "common/types.h"
@@ -16,6 +17,7 @@
 #include "widget/frame_dump.h"
 #include "widget/frame_graph.h"
 #include "widget/memory_map.h"
+#include "widget/module_list.h"
 #include "widget/shader_list.h"
 
 extern std::unique_ptr<Vulkan::Presenter> presenter;
@@ -39,6 +41,7 @@ static bool just_opened_options = false;
 
 static Widget::MemoryMapViewer memory_map;
 static Widget::ShaderList shader_list;
+static Widget::ModuleList module_list;
 
 // clang-format off
 static std::string help_text =
@@ -107,6 +110,9 @@ void L::DrawMenuBar() {
             if (MenuItem("Memory map")) {
                 memory_map.open = true;
             }
+            if (MenuItem("Module list")) {
+                module_list.open = true;
+            }
             ImGui::EndMenu();
         }
 
@@ -117,22 +123,6 @@ void L::DrawMenuBar() {
 
         EndMainMenuBar();
     }
-
-    if (IsKeyPressed(ImGuiKey_F9, false)) {
-        if (io.KeyCtrl && io.KeyAlt) {
-            if (!DebugState.ShouldPauseInSubmit()) {
-                DebugState.RequestFrameDump(dump_frame_count);
-            }
-        }
-        if (!io.KeyCtrl && !io.KeyAlt) {
-            if (isSystemPaused) {
-                DebugState.ResumeGuestThreads();
-            } else {
-                DebugState.PauseGuestThreads();
-            }
-        }
-    }
-
     if (open_popup_options) {
         OpenPopup("GPU Tools Options");
         just_opened_options = true;
@@ -271,6 +261,9 @@ void L::DrawAdvanced() {
     if (shader_list.open) {
         shader_list.Draw();
     }
+    if (module_list.open) {
+        module_list.Draw();
+    }
 }
 
 void L::DrawSimple() {
@@ -379,6 +372,32 @@ void L::Draw() {
             show_simple_fps = !show_simple_fps;
         }
         visibility_toggled = true;
+    }
+
+    if (IsKeyPressed(ImGuiKey_F9, false)) {
+        if (io.KeyCtrl && io.KeyAlt) {
+            if (!DebugState.ShouldPauseInSubmit()) {
+                DebugState.RequestFrameDump(dump_frame_count);
+            }
+        } else {
+            if (DebugState.IsGuestThreadsPaused()) {
+                DebugState.ResumeGuestThreads();
+                SDL_Log("Game resumed from Keyboard");
+                show_pause_status = false;
+            } else {
+                DebugState.PauseGuestThreads();
+                SDL_Log("Game paused from Keyboard");
+                show_pause_status = true;
+            }
+            visibility_toggled = true;
+        }
+    }
+
+    if (show_pause_status) {
+        ImVec2 pos = ImVec2(10, 10);
+        ImU32 color = IM_COL32(255, 255, 255, 255);
+
+        ImGui::GetForegroundDrawList()->AddText(pos, color, "Game Paused Press F9 to Resume");
     }
 
     if (show_simple_fps) {

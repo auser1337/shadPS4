@@ -101,6 +101,7 @@ bool ParseFilterRule(Filter& instance, Iterator begin, Iterator end) {
     SUB(Lib, Ssl2)                                                                                 \
     SUB(Lib, SysModule)                                                                            \
     SUB(Lib, Move)                                                                                 \
+    SUB(Lib, NpAuth)                                                                               \
     SUB(Lib, NpCommon)                                                                             \
     SUB(Lib, NpManager)                                                                            \
     SUB(Lib, NpScore)                                                                              \
@@ -136,6 +137,9 @@ bool ParseFilterRule(Filter& instance, Iterator begin, Iterator end) {
     SUB(Lib, NpParty)                                                                              \
     SUB(Lib, Zlib)                                                                                 \
     SUB(Lib, Hmd)                                                                                  \
+    SUB(Lib, SigninDialog)                                                                         \
+    SUB(Lib, Camera)                                                                               \
+    SUB(Lib, CompanionHttpd)                                                                       \
     CLS(Frontend)                                                                                  \
     CLS(Render)                                                                                    \
     SUB(Render, Vulkan)                                                                            \

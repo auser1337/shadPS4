@@ -384,23 +384,23 @@
     </message>
     <message>
       <source>Nothing</source>
-      <translation>Không có gì</translation>
+      <translation>Không chạy được</translation>
     </message>
     <message>
       <source>Boots</source>
-      <translation>Giày ủng</translation>
+      <translation>Chạy được</translation>
     </message>
     <message>
       <source>Menus</source>
-      <translation>Menu</translation>
+      <translation>Vào được menu</translation>
     </message>
     <message>
       <source>Ingame</source>
-      <translation>Trong game</translation>
+      <translation>Vào được trò chơi</translation>
     </message>
     <message>
       <source>Playable</source>
-      <translation>Có thể chơi</translation>
+      <translation>Chơi được</translation>
     </message>
   </context>
   <context>
@@ -411,7 +411,7 @@
     </message>
     <message>
       <source>D-Pad</source>
-      <translation type="unfinished">D-Pad</translation>
+      <translation>D-Pad</translation>
     </message>
     <message>
       <source>Up</source>
@@ -447,7 +447,7 @@
     </message>
     <message>
       <source>Common Config</source>
-      <translation type="unfinished">Common Config</translation>
+      <translation>Cài Đặt Chung</translation>
     </message>
     <message>
       <source>Use per-game configs</source>
@@ -551,26 +551,26 @@
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Save</translation>
+      <translation>Lưu</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation type="unfinished">Apply</translation>
+      <translation>Áp dụng</translation>
     </message>
     <message>
       <source>Restore Defaults</source>
-      <translation type="unfinished">Restore Defaults</translation>
+      <translation>Khôi Phục Mặc Định</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Hủy</translation>
     </message>
   </context>
   <context>
     <name>EditorDialog</name>
     <message>
       <source>Edit Keyboard + Mouse and Controller input bindings</source>
-      <translation type="unfinished">Edit Keyboard + Mouse and Controller input bindings</translation>
+      <translation>Tùy chỉnh phím được gán cho Bàn phím + Chuột và Tay cầm</translation>
     </message>
     <message>
       <source>Use Per-Game configs</source>
@@ -578,7 +578,7 @@
     </message>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Lỗi</translation>
     </message>
     <message>
       <source>Could not open the file for reading</source>
@@ -590,15 +590,15 @@
     </message>
     <message>
       <source>Save Changes</source>
-      <translation type="unfinished">Save Changes</translation>
+      <translation>Lưu Thay Đổi</translation>
     </message>
     <message>
       <source>Do you want to save changes?</source>
-      <translation type="unfinished">Do you want to save changes?</translation>
+      <translation>Bạn có muốn lưu thay đổi?</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation type="unfinished">Help</translation>
+      <translation>Trợ giúp</translation>
     </message>
     <message>
       <source>Do you want to reset your custom default config to the original default config?</source>
@@ -706,15 +706,15 @@
     </message>
     <message>
       <source>h</source>
-      <translation type="unfinished">h</translation>
+      <translation>giờ</translation>
     </message>
     <message>
       <source>m</source>
-      <translation type="unfinished">m</translation>
+      <translation>phút</translation>
     </message>
     <message>
       <source>s</source>
-      <translation type="unfinished">s</translation>
+      <translation>giây</translation>
     </message>
     <message>
       <source>Compatibility is untested</source>
@@ -722,23 +722,23 @@
     </message>
     <message>
       <source>Game does not initialize properly / crashes the emulator</source>
-      <translation type="unfinished">Game does not initialize properly / crashes the emulator</translation>
+      <translation>Trò chơi không được khởi chạy đúng cách / khiến giả lập bị văng</translation>
     </message>
     <message>
       <source>Game boots, but only displays a blank screen</source>
-      <translation type="unfinished">Game boots, but only displays a blank screen</translation>
+      <translation>Trò chơi có thể khởi chạy, nhưng chẳng hiện gì cả</translation>
     </message>
     <message>
       <source>Game displays an image but does not go past the menu</source>
-      <translation type="unfinished">Game displays an image but does not go past the menu</translation>
+      <translation>Trò chơi hiển thị được hình ảnh, nhưng không thể tiếp tục từ menu</translation>
     </message>
     <message>
       <source>Game has game-breaking glitches or unplayable performance</source>
-      <translation type="unfinished">Game has game-breaking glitches or unplayable performance</translation>
+      <translation>Trò chơi có lỗi ảnh hưởng đến trải nghiệm, hoặc hiệu năng khi chơi không ổn định</translation>
     </message>
     <message>
       <source>Game can be completed with playable performance and no major glitches</source>
-      <translation type="unfinished">Game can be completed with playable performance and no major glitches</translation>
+      <translation>Trò chơi có thể được hoàn thành từ đầu đến cuối, hiệu năng ổn định và không có lỗi ảnh hưởng đến trải nghiệm</translation>
     </message>
     <message>
       <source>Click to see details on github</source>
@@ -883,10 +883,6 @@
       <translation type="unfinished">Error creating shortcut!</translation>
     </message>
     <message>
-      <source>Install PKG</source>
-      <translation type="unfinished">Install PKG</translation>
-    </message>
-    <message>
       <source>Game</source>
       <translation type="unfinished">Game</translation>
     </message>
@@ -976,25 +972,6 @@
     <message>
       <source>Keybindings</source>
       <translation type="unfinished">Keybindings</translation>
-    </message>
-  </context>
-  <context>
-    <name>InstallDirSelect</name>
-    <message>
-      <source>shadPS4 - Choose directory</source>
-      <translation type="unfinished">shadPS4 - Choose directory</translation>
-    </message>
-    <message>
-      <source>Select which directory you want to install to.</source>
-      <translation type="unfinished">Select which directory you want to install to.</translation>
-    </message>
-    <message>
-      <source>Install All Queued to Selected Folder</source>
-      <translation type="unfinished">Install All Queued to Selected Folder</translation>
-    </message>
-    <message>
-      <source>Delete PKG File on Install</source>
-      <translation type="unfinished">Delete PKG File on Install</translation>
     </message>
   </context>
   <context>
@@ -1193,19 +1170,19 @@
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Save</translation>
+      <translation>Lưu</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation type="unfinished">Apply</translation>
+      <translation>Áp dụng</translation>
     </message>
     <message>
       <source>Restore Defaults</source>
-      <translation type="unfinished">Restore Defaults</translation>
+      <translation>Khôi Phục Mặc Định</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Hủy</translation>
     </message>
   </context>
   <context>
@@ -1215,12 +1192,8 @@
       <translation type="unfinished">Open/Add Elf Folder</translation>
     </message>
     <message>
-      <source>Install Packages (PKG)</source>
-      <translation type="unfinished">Install Packages (PKG)</translation>
-    </message>
-    <message>
       <source>Boot Game</source>
-      <translation type="unfinished">Boot Game</translation>
+      <translation>Khởi Chạy Trò Chơi</translation>
     </message>
     <message>
       <source>Check for Updates</source>
@@ -1228,15 +1201,11 @@
     </message>
     <message>
       <source>About shadPS4</source>
-      <translation type="unfinished">About shadPS4</translation>
+      <translation>Thông Tin Về shadPS4</translation>
     </message>
     <message>
       <source>Configure...</source>
       <translation type="unfinished">Configure...</translation>
-    </message>
-    <message>
-      <source>Install application from a .pkg file</source>
-      <translation type="unfinished">Install application from a .pkg file</translation>
     </message>
     <message>
       <source>Recent Games</source>
@@ -1244,23 +1213,23 @@
     </message>
     <message>
       <source>Open shadPS4 Folder</source>
-      <translation type="unfinished">Open shadPS4 Folder</translation>
+      <translation>Mở Thư Mục Của shadPS4</translation>
     </message>
     <message>
       <source>Exit</source>
-      <translation type="unfinished">Exit</translation>
+      <translation>Thoát</translation>
     </message>
     <message>
       <source>Exit shadPS4</source>
-      <translation type="unfinished">Exit shadPS4</translation>
+      <translation>Thoát shadPS4</translation>
     </message>
     <message>
       <source>Exit the application.</source>
-      <translation type="unfinished">Exit the application.</translation>
+      <translation>Thoát ứng dụng.</translation>
     </message>
     <message>
       <source>Show Game List</source>
-      <translation type="unfinished">Show Game List</translation>
+      <translation>Hiển Thị Danh Sách Trò Chơi</translation>
     </message>
     <message>
       <source>Game List Refresh</source>
@@ -1307,8 +1276,12 @@
       <translation type="unfinished">Dump Game List</translation>
     </message>
     <message>
-      <source>PKG Viewer</source>
-      <translation type="unfinished">PKG Viewer</translation>
+      <source>Trophy Viewer</source>
+      <translation type="unfinished">Trophy Viewer</translation>
+    </message>
+    <message>
+      <source>No games found. Please add your games to your library first.</source>
+      <translation type="unfinished">No games found. Please add your games to your library first.</translation>
     </message>
     <message>
       <source>Search...</source>
@@ -1375,10 +1348,6 @@
       <translation>Danh sách trò chơi</translation>
     </message>
     <message>
-      <source> * Unsupported Vulkan Version</source>
-      <translation> * Phiên bản Vulkan không được hỗ trợ</translation>
-    </message>
-    <message>
       <source>Download Cheats For All Installed Games</source>
       <translation>Tải xuống cheat cho tất cả các trò chơi đã cài đặt</translation>
     </message>
@@ -1419,84 +1388,12 @@
       <translation>Chỉ có thể chọn một tệp duy nhất!</translation>
     </message>
     <message>
-      <source>PKG Extraction</source>
-      <translation>Giải nén PKG</translation>
-    </message>
-    <message>
-      <source>Patch detected!</source>
-      <translation>Đã phát hiện bản vá!</translation>
-    </message>
-    <message>
-      <source>PKG and Game versions match: </source>
-      <translation>Các phiên bản PKG và trò chơi khớp nhau: </translation>
-    </message>
-    <message>
-      <source>Would you like to overwrite?</source>
-      <translation>Bạn có muốn ghi đè không?</translation>
-    </message>
-    <message>
-      <source>PKG Version %1 is older than installed version: </source>
-      <translation>Phiên bản PKG %1 cũ hơn phiên bản đã cài đặt: </translation>
-    </message>
-    <message>
-      <source>Game is installed: </source>
-      <translation>Trò chơi đã được cài đặt: </translation>
-    </message>
-    <message>
-      <source>Would you like to install Patch: </source>
-      <translation>Bạn có muốn cài đặt bản vá: </translation>
-    </message>
-    <message>
-      <source>DLC Installation</source>
-      <translation>Cài đặt DLC</translation>
-    </message>
-    <message>
-      <source>Would you like to install DLC: %1?</source>
-      <translation>Bạn có muốn cài đặt DLC: %1?</translation>
-    </message>
-    <message>
-      <source>DLC already installed:</source>
-      <translation>DLC đã được cài đặt:</translation>
-    </message>
-    <message>
-      <source>Game already installed</source>
-      <translation>Trò chơi đã được cài đặt</translation>
-    </message>
-    <message>
-      <source>PKG ERROR</source>
-      <translation>LOI PKG</translation>
-    </message>
-    <message>
-      <source>Extracting PKG %1/%2</source>
-      <translation>Đang giải nén PKG %1/%2</translation>
-    </message>
-    <message>
-      <source>Extraction Finished</source>
-      <translation>Giải nén hoàn tất</translation>
-    </message>
-    <message>
-      <source>Game successfully installed at %1</source>
-      <translation>Trò chơi đã được cài đặt thành công tại %1</translation>
-    </message>
-    <message>
-      <source>File doesn&apos;t appear to be a valid PKG file</source>
-      <translation>Tệp không có vẻ là tệp PKG hợp lệ</translation>
-    </message>
-    <message>
       <source>Run Game</source>
       <translation type="unfinished">Run Game</translation>
     </message>
     <message>
       <source>Eboot.bin file not found</source>
       <translation type="unfinished">Eboot.bin file not found</translation>
-    </message>
-    <message>
-      <source>PKG File (*.PKG *.pkg)</source>
-      <translation type="unfinished">PKG File (*.PKG *.pkg)</translation>
-    </message>
-    <message>
-      <source>PKG is a patch or DLC, please install the game first!</source>
-      <translation type="unfinished">PKG is a patch or DLC, please install the game first!</translation>
     </message>
     <message>
       <source>Game is already running!</source>
@@ -1506,72 +1403,45 @@
       <source>shadPS4</source>
       <translation type="unfinished">shadPS4</translation>
     </message>
-  </context>
-  <context>
-    <name>PKGViewer</name>
     <message>
-      <source>Open Folder</source>
-      <translation type="unfinished">Open Folder</translation>
+      <source>Play</source>
+      <translation type="unfinished">Play</translation>
     </message>
     <message>
-      <source>PKG ERROR</source>
-      <translation>LOI PKG</translation>
+      <source>Pause</source>
+      <translation type="unfinished">Pause</translation>
     </message>
     <message>
-      <source>Name</source>
-      <translation>Tên</translation>
+      <source>Stop</source>
+      <translation type="unfinished">Stop</translation>
     </message>
     <message>
-      <source>Serial</source>
-      <translation>Số seri</translation>
+      <source>Restart</source>
+      <translation type="unfinished">Restart</translation>
     </message>
     <message>
-      <source>Installed</source>
-      <translation type="unfinished">Installed</translation>
+      <source>Full Screen</source>
+      <translation type="unfinished">Full Screen</translation>
     </message>
     <message>
-      <source>Size</source>
-      <translation>Kích thước</translation>
+      <source>Controllers</source>
+      <translation type="unfinished">Controllers</translation>
     </message>
     <message>
-      <source>Category</source>
-      <translation type="unfinished">Category</translation>
+      <source>Keyboard</source>
+      <translation type="unfinished">Keyboard</translation>
     </message>
     <message>
-      <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <source>Refresh List</source>
+      <translation type="unfinished">Refresh List</translation>
     </message>
     <message>
-      <source>App Ver</source>
-      <translation type="unfinished">App Ver</translation>
+      <source>Resume</source>
+      <translation type="unfinished">Resume</translation>
     </message>
     <message>
-      <source>FW</source>
-      <translation type="unfinished">FW</translation>
-    </message>
-    <message>
-      <source>Region</source>
-      <translation>Khu vực</translation>
-    </message>
-    <message>
-      <source>Flags</source>
-      <translation type="unfinished">Flags</translation>
-    </message>
-    <message>
-      <source>Path</source>
-      <translation>Đường dẫn</translation>
-    </message>
-    <message>
-      <source>File</source>
-      <translation type="unfinished">File</translation>
-    </message>
-    <message>
-      <source>Unknown</source>
-      <translation>Không xác định</translation>
-    </message>
-    <message>
-      <source>Package</source>
-      <translation type="unfinished">Package</translation>
+      <source>Show Labels Under Icons</source>
+      <translation type="unfinished">Show Labels Under Icons</translation>
     </message>
   </context>
   <context>
@@ -1599,10 +1469,6 @@
     <message>
       <source>Emulator</source>
       <translation>Trình giả lập</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder</source>
-      <translation>Bật thư mục cập nhật riêng</translation>
     </message>
     <message>
       <source>Default tab when opening settings</source>
@@ -1867,10 +1733,6 @@
     <message>
       <source>Emulator Language:\nSets the language of the emulator&apos;s user interface.</source>
       <translation>Ngôn ngữ của trình giả lập:\nChọn ngôn ngữ của giao diện người dùng của trình giả lập.</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder:\nEnables installing game updates into a separate folder for easy management.\nThis can be manually created by adding the extracted update to the game folder with the name &quot;CUSA00000-UPDATE&quot; where the CUSA ID matches the game&apos;s ID.</source>
-      <translation>Enable Separate Update Folder:\nEnables installing game updates into a separate folder for easy management.</translation>
     </message>
     <message>
       <source>Show Splash Screen:\nShows the game&apos;s splash screen (a special image) while the game is starting.</source>
@@ -2184,12 +2046,20 @@
       <source>Open the custom trophy images/sounds folder:\nYou can add custom images to the trophies and an audio.\nAdd the files to custom_trophy with the following names:\ntrophy.wav OR trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNote: The sound will only work in QT versions.</source>
       <translation type="unfinished">Open the custom trophy images/sounds folder:\nYou can add custom images to the trophies and an audio.\nAdd the files to custom_trophy with the following names:\ntrophy.wav OR trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNote: The sound will only work in QT versions.</translation>
     </message>
+    <message>
+      <source> * Unsupported Vulkan Version</source>
+      <translation type="unfinished"> * Unsupported Vulkan Version</translation>
+    </message>
   </context>
   <context>
     <name>TrophyViewer</name>
     <message>
       <source>Trophy Viewer</source>
       <translation>Trình xem chiến tích</translation>
+    </message>
+    <message>
+      <source>Select Game:</source>
+      <translation type="unfinished">Select Game:</translation>
     </message>
     <message>
       <source>Progress</source>

@@ -7,15 +7,15 @@
     <name>AboutDialog</name>
     <message>
       <source>About shadPS4</source>
-      <translation type="unfinished">About shadPS4</translation>
+      <translation>shadPS4에 관하여</translation>
     </message>
     <message>
       <source>shadPS4 is an experimental open-source emulator for the PlayStation 4.</source>
-      <translation type="unfinished">shadPS4 is an experimental open-source emulator for the PlayStation 4.</translation>
+      <translation>shadPS4는 PlayStation 4용 실험적인 오픈 소스 에뮬레이터입니다.</translation>
     </message>
     <message>
       <source>This software should not be used to play games you have not legally obtained.</source>
-      <translation type="unfinished">This software should not be used to play games you have not legally obtained.</translation>
+      <translation>이 소프트웨어는 합법적으로 얻지 않은 게임을 플레이하는 데 사용되어서는 안 됩니다.</translation>
     </message>
   </context>
   <context>
@@ -26,238 +26,238 @@
     </message>
     <message>
       <source>Cheats/Patches are experimental.\nUse with caution.\n\nDownload cheats individually by selecting the repository and clicking the download button.\nIn the Patches tab, you can download all patches at once, choose which ones you want to use, and save your selection.\n\nSince we do not develop the Cheats/Patches,\nplease report issues to the cheat author.\n\nCreated a new cheat? Visit:\n</source>
-      <translation type="unfinished">Cheats/Patches are experimental.\nUse with caution.\n\nDownload cheats individually by selecting the repository and clicking the download button.\nIn the Patches tab, you can download all patches at once, choose which ones you want to use, and save your selection.\n\nSince we do not develop the Cheats/Patches,\nplease report issues to the cheat author.\n\nCreated a new cheat? Visit:\n</translation>
+      <translation>치트/패치는 실험적인 기능입니다.\n사용 시 주의하시기 바랍니다.\n\n치트를 개별적으로 다운로드하려면, 저장소를 선택한 후 다운로드 버튼을 클릭하세요.\n패치 탭에서는 모든 패치를 한 번에 다운로드할 수 있으며, 원하는 항목을 선택하고 저장할 수 있습니다.\n\n치트/패치는 저희가 개발한 것이 아니므로,\n문제가 발생하면 해당 치트 제작자에게 문의해 주세요.\n\n새로운 치트를 만들었나요? 방문해 주세요:\n</translation>
     </message>
     <message>
       <source>No Image Available</source>
-      <translation type="unfinished">No Image Available</translation>
+      <translation>사용 가능한 이미지 없음</translation>
     </message>
     <message>
       <source>Serial: </source>
-      <translation type="unfinished">Serial: </translation>
+      <translation>시리얼: </translation>
     </message>
     <message>
       <source>Version: </source>
-      <translation type="unfinished">Version: </translation>
+      <translation>버전: </translation>
     </message>
     <message>
       <source>Size: </source>
-      <translation type="unfinished">Size: </translation>
+      <translation>사이즈: </translation>
     </message>
     <message>
       <source>Select Cheat File:</source>
-      <translation type="unfinished">Select Cheat File:</translation>
+      <translation>치트 파일 선택:</translation>
     </message>
     <message>
       <source>Repository:</source>
-      <translation type="unfinished">Repository:</translation>
+      <translation>저장소:</translation>
     </message>
     <message>
       <source>Download Cheats</source>
-      <translation type="unfinished">Download Cheats</translation>
+      <translation>치트 다운로드</translation>
     </message>
     <message>
       <source>Delete File</source>
-      <translation type="unfinished">Delete File</translation>
+      <translation>파일 삭제</translation>
     </message>
     <message>
       <source>No files selected.</source>
-      <translation type="unfinished">No files selected.</translation>
+      <translation>파일 선택되지 않음.</translation>
     </message>
     <message>
       <source>You can delete the cheats you don&apos;t want after downloading them.</source>
-      <translation type="unfinished">You can delete the cheats you don&apos;t want after downloading them.</translation>
+      <translation>다운로드한 후 원하지 않는 치트는 삭제할 수 있습니다.</translation>
     </message>
     <message>
       <source>Do you want to delete the selected file?\n%1</source>
-      <translation type="unfinished">Do you want to delete the selected file?\n%1</translation>
+      <translation>선택한 파일을 삭제하시겠습니까?\n%1</translation>
     </message>
     <message>
       <source>Select Patch File:</source>
-      <translation type="unfinished">Select Patch File:</translation>
+      <translation>패치 파일 선택:</translation>
     </message>
     <message>
       <source>Download Patches</source>
-      <translation type="unfinished">Download Patches</translation>
+      <translation>패치 다운로드</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Save</translation>
+      <translation>저장</translation>
     </message>
     <message>
       <source>Cheats</source>
-      <translation type="unfinished">Cheats</translation>
+      <translation>치트</translation>
     </message>
     <message>
       <source>Patches</source>
-      <translation type="unfinished">Patches</translation>
+      <translation>패치</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>오류</translation>
     </message>
     <message>
       <source>No patch selected.</source>
-      <translation type="unfinished">No patch selected.</translation>
+      <translation>패치 선택되지 않음.</translation>
     </message>
     <message>
       <source>Unable to open files.json for reading.</source>
-      <translation type="unfinished">Unable to open files.json for reading.</translation>
+      <translation>Files.json을 읽기 위해 열 수 없습니다.</translation>
     </message>
     <message>
       <source>No patch file found for the current serial.</source>
-      <translation type="unfinished">No patch file found for the current serial.</translation>
+      <translation>현재 시리얼에 해당하는 패치 파일을 찾을 수 없습니다.</translation>
     </message>
     <message>
       <source>Unable to open the file for reading.</source>
-      <translation type="unfinished">Unable to open the file for reading.</translation>
+      <translation>파일을 읽기 위해 열 수 없습니다.</translation>
     </message>
     <message>
       <source>Unable to open the file for writing.</source>
-      <translation type="unfinished">Unable to open the file for writing.</translation>
+      <translation>파일을 쓰기 위해 열 수 없습니다.</translation>
     </message>
     <message>
       <source>Failed to parse XML: </source>
-      <translation type="unfinished">Failed to parse XML: </translation>
+      <translation>XML 구문 분석에 실패했습니다: </translation>
     </message>
     <message>
       <source>Success</source>
-      <translation type="unfinished">Success</translation>
+      <translation>성공</translation>
     </message>
     <message>
       <source>Options saved successfully.</source>
-      <translation type="unfinished">Options saved successfully.</translation>
+      <translation>옵션이 성공적으로 저장되었습니다.</translation>
     </message>
     <message>
       <source>Invalid Source</source>
-      <translation type="unfinished">Invalid Source</translation>
+      <translation>잘못된 출처</translation>
     </message>
     <message>
       <source>The selected source is invalid.</source>
-      <translation type="unfinished">The selected source is invalid.</translation>
+      <translation>선택한 출처가 올바르지 않습니다.</translation>
     </message>
     <message>
       <source>File Exists</source>
-      <translation type="unfinished">File Exists</translation>
+      <translation>파일이 이미 존재합니다</translation>
     </message>
     <message>
       <source>File already exists. Do you want to replace it?</source>
-      <translation type="unfinished">File already exists. Do you want to replace it?</translation>
+      <translation>파일이 이미 존재합니다. 덮어쓰시겠습니까?</translation>
     </message>
     <message>
       <source>Failed to save file:</source>
-      <translation type="unfinished">Failed to save file:</translation>
+      <translation>파일 저장 실패:</translation>
     </message>
     <message>
       <source>Failed to download file:</source>
-      <translation type="unfinished">Failed to download file:</translation>
+      <translation>파일 다운로드 실패:</translation>
     </message>
     <message>
       <source>Cheats Not Found</source>
-      <translation type="unfinished">Cheats Not Found</translation>
+      <translation>치트 찾을 수 없음</translation>
     </message>
     <message>
       <source>No Cheats found for this game in this version of the selected repository,try another repository or a different version of the game.</source>
-      <translation type="unfinished">No Cheats found for this game in this version of the selected repository,try another repository or a different version of the game.</translation>
+      <translation>선택한 저장소의 이 버전에서 해당 게임에 대한 치트를 찾을 수 없습니다. 다른 저장소나 게임의 다른 버전을 시도해 보세요.</translation>
     </message>
     <message>
       <source>Cheats Downloaded Successfully</source>
-      <translation type="unfinished">Cheats Downloaded Successfully</translation>
+      <translation>치트가 성공적으로 다운로드되었습니다</translation>
     </message>
     <message>
       <source>You have successfully downloaded the cheats for this version of the game from the selected repository. You can try downloading from another repository, if it is available it will also be possible to use it by selecting the file from the list.</source>
-      <translation type="unfinished">You have successfully downloaded the cheats for this version of the game from the selected repository. You can try downloading from another repository, if it is available it will also be possible to use it by selecting the file from the list.</translation>
+      <translation>선택한 저장소에서 이 게임 버전의 치트를 성공적으로 다운로드했습니다. 다른 저장소에서 다운로드할 수 있는 경우, 목록에서 파일을 선택하여 사용할 수도 있습니다.</translation>
     </message>
     <message>
       <source>Failed to save:</source>
-      <translation type="unfinished">Failed to save:</translation>
+      <translation>저장 실패:</translation>
     </message>
     <message>
       <source>Failed to download:</source>
-      <translation type="unfinished">Failed to download:</translation>
+      <translation>다운로드 실패:</translation>
     </message>
     <message>
       <source>Download Complete</source>
-      <translation type="unfinished">Download Complete</translation>
+      <translation>다운로드 완료</translation>
     </message>
     <message>
       <source>Patches Downloaded Successfully! All Patches available for all games have been downloaded, there is no need to download them individually for each game as happens in Cheats. If the patch does not appear, it may be that it does not exist for the specific serial and version of the game.</source>
-      <translation type="unfinished">Patches Downloaded Successfully! All Patches available for all games have been downloaded, there is no need to download them individually for each game as happens in Cheats. If the patch does not appear, it may be that it does not exist for the specific serial and version of the game.</translation>
+      <translation>패치가 성공적으로 다운로드되었습니다! 모든 게임에 적용 가능한 모든 패치가 다운로드되었으므로, 치트처럼 각 게임마다 개별적으로 다운로드할 필요가 없습니다. 만약 패치가 나타나지 않는다면, 해당 게임의 특정 시리얼 및 버전에 해당 패치가 없기 때문일 수 있습니다.</translation>
     </message>
     <message>
       <source>Failed to parse JSON data from HTML.</source>
-      <translation type="unfinished">Failed to parse JSON data from HTML.</translation>
+      <translation>HTML에서 JSON 데이터를 구문 분석하는 데 실패했습니다.</translation>
     </message>
     <message>
       <source>Failed to retrieve HTML page.</source>
-      <translation type="unfinished">Failed to retrieve HTML page.</translation>
+      <translation>HTML 페이지를 가져오지 못했습니다.</translation>
     </message>
     <message>
       <source>The game is in version: %1</source>
-      <translation type="unfinished">The game is in version: %1</translation>
+      <translation>게임 버전: %1</translation>
     </message>
     <message>
       <source>The downloaded patch only works on version: %1</source>
-      <translation type="unfinished">The downloaded patch only works on version: %1</translation>
+      <translation>다운로드한 패치는 버전 %1 에서만 작동합니다.</translation>
     </message>
     <message>
       <source>You may need to update your game.</source>
-      <translation type="unfinished">You may need to update your game.</translation>
+      <translation>게임을 업데이트해야 할 수도 있습니다.</translation>
     </message>
     <message>
       <source>Incompatibility Notice</source>
-      <translation type="unfinished">Incompatibility Notice</translation>
+      <translation>호환성 경고</translation>
     </message>
     <message>
       <source>Failed to open file:</source>
-      <translation type="unfinished">Failed to open file:</translation>
+      <translation>파일을 열지 못했습니다:</translation>
     </message>
     <message>
       <source>XML ERROR:</source>
-      <translation type="unfinished">XML ERROR:</translation>
+      <translation>XML 오류:</translation>
     </message>
     <message>
       <source>Failed to open files.json for writing</source>
-      <translation type="unfinished">Failed to open files.json for writing</translation>
+      <translation>files.json 파일을 쓰기 위해 열지 못했습니다</translation>
     </message>
     <message>
       <source>Author: </source>
-      <translation type="unfinished">Author: </translation>
+      <translation>제작자: </translation>
     </message>
     <message>
       <source>Directory does not exist:</source>
-      <translation type="unfinished">Directory does not exist:</translation>
+      <translation>디렉터리가 존재하지 않습니다:</translation>
     </message>
     <message>
       <source>Failed to open files.json for reading.</source>
-      <translation type="unfinished">Failed to open files.json for reading.</translation>
+      <translation>files.json 파일을 읽기 위해 열지 못했습니다.</translation>
     </message>
     <message>
       <source>Name:</source>
-      <translation type="unfinished">Name:</translation>
+      <translation>이름:</translation>
     </message>
     <message>
       <source>Can&apos;t apply cheats before the game is started</source>
-      <translation type="unfinished">Can&apos;t apply cheats before the game is started</translation>
+      <translation>게임이 시작되기 전에 치트를 적용할 수 없습니다</translation>
     </message>
     <message>
       <source>Close</source>
-      <translation type="unfinished">Close</translation>
+      <translation>닫기</translation>
     </message>
   </context>
   <context>
     <name>CheckUpdate</name>
     <message>
       <source>Auto Updater</source>
-      <translation type="unfinished">Auto Updater</translation>
+      <translation>자동 업데이트</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>오류</translation>
     </message>
     <message>
       <source>Network error:</source>
-      <translation type="unfinished">Network error:</translation>
+      <translation>네트워크 오류:</translation>
     </message>
     <message>
       <source>The Auto Updater allows up to 60 update checks per hour.\nYou have reached this limit. Please try again later.</source>
@@ -265,91 +265,91 @@
     </message>
     <message>
       <source>Failed to parse update information.</source>
-      <translation type="unfinished">Failed to parse update information.</translation>
+      <translation>업데이트 정보 구문 분석에 실패했습니다.</translation>
     </message>
     <message>
       <source>No pre-releases found.</source>
-      <translation type="unfinished">No pre-releases found.</translation>
+      <translation>사전 릴리스가 없습니다.</translation>
     </message>
     <message>
       <source>Invalid release data.</source>
-      <translation type="unfinished">Invalid release data.</translation>
+      <translation>잘못된 릴리스 데이터입니다.</translation>
     </message>
     <message>
       <source>No download URL found for the specified asset.</source>
-      <translation type="unfinished">No download URL found for the specified asset.</translation>
+      <translation>지정된 자산에 대한 다운로드 URL을 찾을 수 없습니다.</translation>
     </message>
     <message>
       <source>Your version is already up to date!</source>
-      <translation type="unfinished">Your version is already up to date!</translation>
+      <translation>버전이 이미 최신입니다!</translation>
     </message>
     <message>
       <source>Update Available</source>
-      <translation type="unfinished">Update Available</translation>
+      <translation>업데이트 가능</translation>
     </message>
     <message>
       <source>Update Channel</source>
-      <translation type="unfinished">Update Channel</translation>
+      <translation>업데이트 채널</translation>
     </message>
     <message>
       <source>Current Version</source>
-      <translation type="unfinished">Current Version</translation>
+      <translation>현재 버전</translation>
     </message>
     <message>
       <source>Latest Version</source>
-      <translation type="unfinished">Latest Version</translation>
+      <translation>최신 버전</translation>
     </message>
     <message>
       <source>Do you want to update?</source>
-      <translation type="unfinished">Do you want to update?</translation>
+      <translation>업데이트하시겠습니까?</translation>
     </message>
     <message>
       <source>Show Changelog</source>
-      <translation type="unfinished">Show Changelog</translation>
+      <translation>변경 사항 보기</translation>
     </message>
     <message>
       <source>Check for Updates at Startup</source>
-      <translation type="unfinished">Check for Updates at Startup</translation>
+      <translation>시작할 때 업데이트 확인</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>업데이트</translation>
     </message>
     <message>
       <source>No</source>
-      <translation type="unfinished">No</translation>
+      <translation>아니요</translation>
     </message>
     <message>
       <source>Hide Changelog</source>
-      <translation type="unfinished">Hide Changelog</translation>
+      <translation>변경 사항 숨기기</translation>
     </message>
     <message>
       <source>Changes</source>
-      <translation type="unfinished">Changes</translation>
+      <translation>변경 사항</translation>
     </message>
     <message>
       <source>Network error occurred while trying to access the URL</source>
-      <translation type="unfinished">Network error occurred while trying to access the URL</translation>
+      <translation>URL에 접근하는 동안 네트워크 오류가 발생했습니다</translation>
     </message>
     <message>
       <source>Download Complete</source>
-      <translation type="unfinished">Download Complete</translation>
+      <translation>다운로드 완료</translation>
     </message>
     <message>
       <source>The update has been downloaded, press OK to install.</source>
-      <translation type="unfinished">The update has been downloaded, press OK to install.</translation>
+      <translation>업데이트가 다운로드 되었습니다. 설치하려면 확인을 눌러주세요.</translation>
     </message>
     <message>
       <source>Failed to save the update file at</source>
-      <translation type="unfinished">Failed to save the update file at</translation>
+      <translation>업데이트 파일을 다음 위치에 저장하지 못했습니다</translation>
     </message>
     <message>
       <source>Starting Update...</source>
-      <translation type="unfinished">Starting Update...</translation>
+      <translation>업데이트를 시작합니다...</translation>
     </message>
     <message>
       <source>Failed to create the update script file</source>
-      <translation type="unfinished">Failed to create the update script file</translation>
+      <translation>업데이트 스크립트 파일을 생성하지 못했습니다</translation>
     </message>
   </context>
   <context>
@@ -407,83 +407,83 @@
     <name>ControlSettings</name>
     <message>
       <source>Configure Controls</source>
-      <translation type="unfinished">Configure Controls</translation>
+      <translation>컨트롤 설정</translation>
     </message>
     <message>
       <source>D-Pad</source>
-      <translation type="unfinished">D-Pad</translation>
+      <translation>D-패드</translation>
     </message>
     <message>
       <source>Up</source>
-      <translation type="unfinished">Up</translation>
+      <translation>위</translation>
     </message>
     <message>
       <source>Left</source>
-      <translation type="unfinished">Left</translation>
+      <translation>왼쪽</translation>
     </message>
     <message>
       <source>Right</source>
-      <translation type="unfinished">Right</translation>
+      <translation>오른쪽</translation>
     </message>
     <message>
       <source>Down</source>
-      <translation type="unfinished">Down</translation>
+      <translation>아래</translation>
     </message>
     <message>
       <source>Left Stick Deadzone (def:2 max:127)</source>
-      <translation type="unfinished">Left Stick Deadzone (def:2 max:127)</translation>
+      <translation>왼쪽 스틱 데드존 (기본값:2 최대값:127)</translation>
     </message>
     <message>
       <source>Left Deadzone</source>
-      <translation type="unfinished">Left Deadzone</translation>
+      <translation>왼쪽 데드존</translation>
     </message>
     <message>
       <source>Left Stick</source>
-      <translation type="unfinished">Left Stick</translation>
+      <translation>왼쪽 스틱</translation>
     </message>
     <message>
       <source>Config Selection</source>
-      <translation type="unfinished">Config Selection</translation>
+      <translation>설정 선택</translation>
     </message>
     <message>
       <source>Common Config</source>
-      <translation type="unfinished">Common Config</translation>
+      <translation>공통 설정</translation>
     </message>
     <message>
       <source>Use per-game configs</source>
-      <translation type="unfinished">Use per-game configs</translation>
+      <translation>게임 별 설정 사용</translation>
     </message>
     <message>
       <source>L1 / LB</source>
-      <translation type="unfinished">L1 / LB</translation>
+      <translation>L1 / LB</translation>
     </message>
     <message>
       <source>L2 / LT</source>
-      <translation type="unfinished">L2 / LT</translation>
+      <translation>L2 / LT</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>뒤로</translation>
     </message>
     <message>
       <source>R1 / RB</source>
-      <translation type="unfinished">R1 / RB</translation>
+      <translation>R1 / RB</translation>
     </message>
     <message>
       <source>R2 / RT</source>
-      <translation type="unfinished">R2 / RT</translation>
+      <translation>R2 / RT</translation>
     </message>
     <message>
       <source>L3</source>
-      <translation type="unfinished">L3</translation>
+      <translation>L3</translation>
     </message>
     <message>
       <source>Options / Start</source>
-      <translation type="unfinished">Options / Start</translation>
+      <translation>옵션 / 시작</translation>
     </message>
     <message>
       <source>R3</source>
-      <translation type="unfinished">R3</translation>
+      <translation>R3</translation>
     </message>
     <message>
       <source>Face Buttons</source>
@@ -883,10 +883,6 @@
       <translation type="unfinished">Error creating shortcut!</translation>
     </message>
     <message>
-      <source>Install PKG</source>
-      <translation type="unfinished">Install PKG</translation>
-    </message>
-    <message>
       <source>Game</source>
       <translation type="unfinished">Game</translation>
     </message>
@@ -976,25 +972,6 @@
     <message>
       <source>Keybindings</source>
       <translation type="unfinished">Keybindings</translation>
-    </message>
-  </context>
-  <context>
-    <name>InstallDirSelect</name>
-    <message>
-      <source>shadPS4 - Choose directory</source>
-      <translation type="unfinished">shadPS4 - Choose directory</translation>
-    </message>
-    <message>
-      <source>Select which directory you want to install to.</source>
-      <translation type="unfinished">Select which directory you want to install to.</translation>
-    </message>
-    <message>
-      <source>Install All Queued to Selected Folder</source>
-      <translation type="unfinished">Install All Queued to Selected Folder</translation>
-    </message>
-    <message>
-      <source>Delete PKG File on Install</source>
-      <translation type="unfinished">Delete PKG File on Install</translation>
     </message>
   </context>
   <context>
@@ -1215,10 +1192,6 @@
       <translation type="unfinished">Open/Add Elf Folder</translation>
     </message>
     <message>
-      <source>Install Packages (PKG)</source>
-      <translation type="unfinished">Install Packages (PKG)</translation>
-    </message>
-    <message>
       <source>Boot Game</source>
       <translation type="unfinished">Boot Game</translation>
     </message>
@@ -1233,10 +1206,6 @@
     <message>
       <source>Configure...</source>
       <translation type="unfinished">Configure...</translation>
-    </message>
-    <message>
-      <source>Install application from a .pkg file</source>
-      <translation type="unfinished">Install application from a .pkg file</translation>
     </message>
     <message>
       <source>Recent Games</source>
@@ -1307,8 +1276,12 @@
       <translation type="unfinished">Dump Game List</translation>
     </message>
     <message>
-      <source>PKG Viewer</source>
-      <translation type="unfinished">PKG Viewer</translation>
+      <source>Trophy Viewer</source>
+      <translation type="unfinished">Trophy Viewer</translation>
+    </message>
+    <message>
+      <source>No games found. Please add your games to your library first.</source>
+      <translation type="unfinished">No games found. Please add your games to your library first.</translation>
     </message>
     <message>
       <source>Search...</source>
@@ -1375,10 +1348,6 @@
       <translation type="unfinished">Game List</translation>
     </message>
     <message>
-      <source> * Unsupported Vulkan Version</source>
-      <translation type="unfinished"> * Unsupported Vulkan Version</translation>
-    </message>
-    <message>
       <source>Download Cheats For All Installed Games</source>
       <translation type="unfinished">Download Cheats For All Installed Games</translation>
     </message>
@@ -1419,84 +1388,12 @@
       <translation type="unfinished">Only one file can be selected!</translation>
     </message>
     <message>
-      <source>PKG Extraction</source>
-      <translation type="unfinished">PKG Extraction</translation>
-    </message>
-    <message>
-      <source>Patch detected!</source>
-      <translation type="unfinished">Patch detected!</translation>
-    </message>
-    <message>
-      <source>PKG and Game versions match: </source>
-      <translation type="unfinished">PKG and Game versions match: </translation>
-    </message>
-    <message>
-      <source>Would you like to overwrite?</source>
-      <translation type="unfinished">Would you like to overwrite?</translation>
-    </message>
-    <message>
-      <source>PKG Version %1 is older than installed version: </source>
-      <translation type="unfinished">PKG Version %1 is older than installed version: </translation>
-    </message>
-    <message>
-      <source>Game is installed: </source>
-      <translation type="unfinished">Game is installed: </translation>
-    </message>
-    <message>
-      <source>Would you like to install Patch: </source>
-      <translation type="unfinished">Would you like to install Patch: </translation>
-    </message>
-    <message>
-      <source>DLC Installation</source>
-      <translation type="unfinished">DLC Installation</translation>
-    </message>
-    <message>
-      <source>Would you like to install DLC: %1?</source>
-      <translation type="unfinished">Would you like to install DLC: %1?</translation>
-    </message>
-    <message>
-      <source>DLC already installed:</source>
-      <translation type="unfinished">DLC already installed:</translation>
-    </message>
-    <message>
-      <source>Game already installed</source>
-      <translation type="unfinished">Game already installed</translation>
-    </message>
-    <message>
-      <source>PKG ERROR</source>
-      <translation type="unfinished">PKG ERROR</translation>
-    </message>
-    <message>
-      <source>Extracting PKG %1/%2</source>
-      <translation type="unfinished">Extracting PKG %1/%2</translation>
-    </message>
-    <message>
-      <source>Extraction Finished</source>
-      <translation type="unfinished">Extraction Finished</translation>
-    </message>
-    <message>
-      <source>Game successfully installed at %1</source>
-      <translation type="unfinished">Game successfully installed at %1</translation>
-    </message>
-    <message>
-      <source>File doesn&apos;t appear to be a valid PKG file</source>
-      <translation type="unfinished">File doesn&apos;t appear to be a valid PKG file</translation>
-    </message>
-    <message>
       <source>Run Game</source>
       <translation type="unfinished">Run Game</translation>
     </message>
     <message>
       <source>Eboot.bin file not found</source>
       <translation type="unfinished">Eboot.bin file not found</translation>
-    </message>
-    <message>
-      <source>PKG File (*.PKG *.pkg)</source>
-      <translation type="unfinished">PKG File (*.PKG *.pkg)</translation>
-    </message>
-    <message>
-      <source>PKG is a patch or DLC, please install the game first!</source>
-      <translation type="unfinished">PKG is a patch or DLC, please install the game first!</translation>
     </message>
     <message>
       <source>Game is already running!</source>
@@ -1506,72 +1403,45 @@
       <source>shadPS4</source>
       <translation type="unfinished">shadPS4</translation>
     </message>
-  </context>
-  <context>
-    <name>PKGViewer</name>
     <message>
-      <source>Open Folder</source>
-      <translation type="unfinished">Open Folder</translation>
+      <source>Play</source>
+      <translation type="unfinished">Play</translation>
     </message>
     <message>
-      <source>PKG ERROR</source>
-      <translation type="unfinished">PKG ERROR</translation>
+      <source>Pause</source>
+      <translation type="unfinished">Pause</translation>
     </message>
     <message>
-      <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <source>Stop</source>
+      <translation type="unfinished">Stop</translation>
     </message>
     <message>
-      <source>Serial</source>
-      <translation type="unfinished">Serial</translation>
+      <source>Restart</source>
+      <translation type="unfinished">Restart</translation>
     </message>
     <message>
-      <source>Installed</source>
-      <translation type="unfinished">Installed</translation>
+      <source>Full Screen</source>
+      <translation type="unfinished">Full Screen</translation>
     </message>
     <message>
-      <source>Size</source>
-      <translation type="unfinished">Size</translation>
+      <source>Controllers</source>
+      <translation type="unfinished">Controllers</translation>
     </message>
     <message>
-      <source>Category</source>
-      <translation type="unfinished">Category</translation>
+      <source>Keyboard</source>
+      <translation type="unfinished">Keyboard</translation>
     </message>
     <message>
-      <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <source>Refresh List</source>
+      <translation type="unfinished">Refresh List</translation>
     </message>
     <message>
-      <source>App Ver</source>
-      <translation type="unfinished">App Ver</translation>
+      <source>Resume</source>
+      <translation type="unfinished">Resume</translation>
     </message>
     <message>
-      <source>FW</source>
-      <translation type="unfinished">FW</translation>
-    </message>
-    <message>
-      <source>Region</source>
-      <translation type="unfinished">Region</translation>
-    </message>
-    <message>
-      <source>Flags</source>
-      <translation type="unfinished">Flags</translation>
-    </message>
-    <message>
-      <source>Path</source>
-      <translation type="unfinished">Path</translation>
-    </message>
-    <message>
-      <source>File</source>
-      <translation type="unfinished">File</translation>
-    </message>
-    <message>
-      <source>Unknown</source>
-      <translation>알 수 없음</translation>
-    </message>
-    <message>
-      <source>Package</source>
-      <translation type="unfinished">Package</translation>
+      <source>Show Labels Under Icons</source>
+      <translation type="unfinished">Show Labels Under Icons</translation>
     </message>
   </context>
   <context>
@@ -1599,10 +1469,6 @@
     <message>
       <source>Emulator</source>
       <translation type="unfinished">Emulator</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder</source>
-      <translation type="unfinished">Enable Separate Update Folder</translation>
     </message>
     <message>
       <source>Default tab when opening settings</source>
@@ -1867,10 +1733,6 @@
     <message>
       <source>Emulator Language:\nSets the language of the emulator&apos;s user interface.</source>
       <translation type="unfinished">Emulator Language:\nSets the language of the emulator&apos;s user interface.</translation>
-    </message>
-    <message>
-      <source>Enable Separate Update Folder:\nEnables installing game updates into a separate folder for easy management.\nThis can be manually created by adding the extracted update to the game folder with the name &quot;CUSA00000-UPDATE&quot; where the CUSA ID matches the game&apos;s ID.</source>
-      <translation type="unfinished">Enable Separate Update Folder:\nEnables installing game updates into a separate folder for easy management.\nThis can be manually created by adding the extracted update to the game folder with the name &quot;CUSA00000-UPDATE&quot; where the CUSA ID matches the game&apos;s ID.</translation>
     </message>
     <message>
       <source>Show Splash Screen:\nShows the game&apos;s splash screen (a special image) while the game is starting.</source>
@@ -2184,12 +2046,20 @@
       <source>Open the custom trophy images/sounds folder:\nYou can add custom images to the trophies and an audio.\nAdd the files to custom_trophy with the following names:\ntrophy.wav OR trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNote: The sound will only work in QT versions.</source>
       <translation type="unfinished">Open the custom trophy images/sounds folder:\nYou can add custom images to the trophies and an audio.\nAdd the files to custom_trophy with the following names:\ntrophy.wav OR trophy.mp3, bronze.png, gold.png, platinum.png, silver.png\nNote: The sound will only work in QT versions.</translation>
     </message>
+    <message>
+      <source> * Unsupported Vulkan Version</source>
+      <translation type="unfinished"> * Unsupported Vulkan Version</translation>
+    </message>
   </context>
   <context>
     <name>TrophyViewer</name>
     <message>
       <source>Trophy Viewer</source>
       <translation type="unfinished">Trophy Viewer</translation>
+    </message>
+    <message>
+      <source>Select Game:</source>
+      <translation type="unfinished">Select Game:</translation>
     </message>
     <message>
       <source>Progress</source>

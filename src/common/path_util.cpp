@@ -60,7 +60,7 @@ static CFURLRef UntranslocateBundlePath(const CFURLRef bundle_path) {
     return nullptr;
 }
 
-static std::filesystem::path GetBundleParentDirectory() {
+static std::optional<std::filesystem::path> GetBundleParentDirectory() {
     if (CFBundleRef bundle_ref = CFBundleGetMainBundle()) {
         if (CFURLRef bundle_url_ref = CFBundleCopyBundleURL(bundle_ref)) {
             SCOPE_EXIT {
@@ -83,14 +83,16 @@ static std::filesystem::path GetBundleParentDirectory() {
             }
         }
     }
-    return std::filesystem::current_path();
+    return std::nullopt;
 }
 #endif
 
 static auto UserPaths = [] {
-#ifdef __APPLE__
+#if defined(__APPLE__) && defined(ENABLE_QT_GUI)
     // Set the current path to the directory containing the app bundle.
-    std::filesystem::current_path(GetBundleParentDirectory());
+    if (const auto bundle_dir = GetBundleParentDirectory()) {
+        std::filesystem::current_path(*bundle_dir);
+    }
 #endif
 
     // Try the portable user directory first.
@@ -126,7 +128,6 @@ static auto UserPaths = [] {
     create_path(PathType::LogDir, user_dir / LOG_DIR);
     create_path(PathType::ScreenshotsDir, user_dir / SCREENSHOTS_DIR);
     create_path(PathType::ShaderDir, user_dir / SHADER_DIR);
-    create_path(PathType::SaveDataDir, user_dir / SAVEDATA_DIR);
     create_path(PathType::GameDataDir, user_dir / GAMEDATA_DIR);
     create_path(PathType::TempDataDir, user_dir / TEMPDATA_DIR);
     create_path(PathType::SysModuleDir, user_dir / SYSMODULES_DIR);
